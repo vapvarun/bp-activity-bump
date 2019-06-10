@@ -3,7 +3,7 @@ Contributors: wbcomdesigns
 Tags: activity bump
 Requires at least: 3.0.1
 Tested up to: 4.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,10 +21,13 @@ This plugin basically provides you the ability to bump activity on comment or li
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.1 =
+* BP 4.3.0 compatibility check.
+
+= 1.0.0 =
 This is initial version.
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 1.0.0 =
 This is initial version.

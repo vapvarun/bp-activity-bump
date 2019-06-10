@@ -6,7 +6,7 @@
   Author:     Wbcom Designs
   Description: Bumps an activity record to the top of the stream on activity comment replies and like
   Author URI: http://wbcomdesigns.com
-  Version: 1.0.0
+  Version: 1.0.1
  */
 
 /**
