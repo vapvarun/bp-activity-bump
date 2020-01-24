@@ -107,3 +107,44 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 	add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
 }
+
+/**
+ *  Check if buddypress activate.
+ */
+if( !function_exists( 'bp_activity_bump_requires_buddypress' ) ){
+    add_action( 'admin_init', 'bp_activity_bump_requires_buddypress' );
+    function bp_activity_bump_requires_buddypress()
+    {
+
+        if ( !class_exists( 'Buddypress' ) ) {
+            deactivate_plugins( plugin_basename( __FILE__ ) );
+            //deactivate_plugins('buddypress-polls/buddypress-polls.php');
+            add_action( 'admin_notices', 'bp_activity_bump_required_plugin_admin_notice' );
+            unset($_GET['activate']);
+        }
+    }
+
+}
+
+/**
+ * Throw an Alert to tell the Admin why it didn't activate.
+ *
+ * @author wbcomdesigns
+ * @since  1.2.0
+ */
+if( !function_exists( 'bp_activity_bump_required_plugin_admin_notice' ) ){
+    function bp_activity_bump_required_plugin_admin_notice()
+    {
+
+        $bpquotes_plugin          = esc_html__('BuddyPress Activity Bump', 'bp-activity-bump');
+        $bp_plugin                = esc_html__('BuddyPress', 'bp-activity-bump');
+        echo '<div class="error"><p>';
+        echo sprintf(esc_html__('%1$s is ineffective now as it requires %2$s to be installed and active.', 'bp-activity-bump'), '<strong>' . esc_html($bpquotes_plugin) . '</strong>', '<strong>' . esc_html($bp_plugin) . '</strong>');
+        echo '</p></div>';
+        if (isset($_GET['activate']) ) {
+            unset($_GET['activate']);
+        }
+    }
+
+}
+
