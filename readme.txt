@@ -21,6 +21,10 @@ This plugin basically provides you the ability to bump activity on comment or li
 
 == Changelog ==
 
+= 1.1.0 =
+* Fix: #8 Youtube embeded video not getting with embeded after bump
+* Fix: #7 Fixed Image issue with BuddyPress rtMedia Plugin 
+
 = 1.0.1 =
 * BP 4.3.0 compatibility check.
 
