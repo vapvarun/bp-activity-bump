@@ -1,12 +1,11 @@
 <?php
-
 /*
   Plugin Name: BuddyPress Activity Bump
   Plugin URI: http://wbcomdesigns.com
   Author:     Wbcom Designs
   Description: Bumps an activity record to the top of the stream on activity comment replies and like
   Author URI: http://wbcomdesigns.com
-  Version: 1.1.0
+  Version: 1.0.0
  */
 
 /**
@@ -35,7 +34,7 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 
 		$activity                = new BP_Activity_Activity( $activity_id );
 		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=". $activity_id);
+		$update                  = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=" . $activity_id );
 		if ( ! $update ) {
 			return false;
 		}
@@ -97,7 +96,7 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 		$activity                = new BP_Activity_Activity( $activity_id );
 		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=". $activity_id);
+		$update                  = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=" . $activity_id );
 		if ( ! $update ) {
 			return false;
 		}
@@ -109,3 +108,10 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 	add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
 }
+
+require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://demos.wbcomdesigns.com/exporter/free-plugins/bp-activity-bump.json',
+	__FILE__, // Full path to the main plugin file or functions.php.
+	'bp-activity-bump'
+);
