@@ -1,24 +1,25 @@
 <?php
-/*
-  Plugin Name: BuddyPress Activity Bump
-  Plugin URI: http://wbcomdesigns.com
-  Author:     Wbcom Designs
-  Description: Bumps an activity record to the top of the stream on activity comment replies and like
-  Author URI: http://wbcomdesigns.com
-  Version: 1.1.0
- */
-
 /**
- * Function to update activity template on comment posted
+ * Plugin Name: BuddyPress Activity Bump
+ * Plugin URI: http://wbcomdesigns.com
+ * Author:     Wbcom Designs
+ * Description: Bumps an activity record to the top of the stream on activity comment replies and like
+ * Author URI: http://wbcomdesigns.com
+ * Version: 1.1.0
  *
- * @global type $bp
- * @global type $wpdb
- * @param type $comment_id
- * @param type $params
- * @return boolean
+ * @package bp-activity-bump
  */
-if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 
+if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
+	/**
+	 * Function to update activity template on comment posted
+	 *
+	 * @global type $bp
+	 * @global type $wpdb
+	 * @param type $comment_id Get a comment id.
+	 * @param type $params Parameter Array.
+	 * @return boolean
+	 */
 	function wb_bp_activity_comment_posted( $comment_id, $params ) {
 		global $bp, $wpdb;
 		extract( $params, EXTR_SKIP );
@@ -34,7 +35,7 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 
 		$activity                = new BP_Activity_Activity( $activity_id );
 		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update                  = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=" . $activity_id );
+		$update                  = $wpdb->get_results( $wpdb->prepare( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=%s", $activity_id ) );
 		if ( ! $update ) {
 			return false;
 		}
@@ -47,40 +48,42 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 	add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 2 );
 }
 
-/**
- * Function to update activity action on comment posted and favorite button click
- *
- * @global type $bp
- * @param string $content
- * @param type $activity
- * @return string
- */
 if ( ! function_exists( 'wb_bp_activity_bump_time_since' ) ) {
 
+	/**
+	 * Function to update activity action on comment posted and favorite button click
+	 *
+	 * @global type $bp
+	 * @param string $content Return the content.
+	 * @param type   $activity BP Profile Activity.
+	 * @return string
+	 */
 	function wb_bp_activity_bump_time_since( $content, $activity ) {
 		global $bp;
-		if ( ! $date = bp_activity_get_meta( $activity->id, 'activity_bump_date' ) ) {
+		$date = bp_activity_get_meta( $activity->id, 'activity_bump_date' );
+		if ( ! $date ) {
 			return $content;
 		}
-
+		/* Translators: %s: Activity date */
 		$content = '<span class="time-since">' . sprintf( __( ' updated %s', 'bp-activity-bump' ), bp_core_time_since( $activity->date_recorded ) ) . '</span>';
-		return '<span class="time-since time-created">' . sprintf( __( ' %s', 'buddypress' ), bp_core_time_since( $date ) ) . '</span> &middot; ';
+		/* Translators: %s: Activity date */
+		return '<span class="time-since time-created">' . sprintf( __( '%s', 'bp-activity-bump' ), bp_core_time_since( $date ) ) . '</span> &middot; ';
 	}
 
 	add_filter( 'bp_activity_time_since', 'wb_bp_activity_bump_time_since', 10, 2 );
 }
 
-/**
- * Function to update activity stream on activity like
- *
- * @global type $bp
- * @global type $wpdb
- * @param type $activity_id
- * @param type $user_id
- * @return boolean
- */
-if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
+if ( ! function_exists( 'wb_add_like_notification' ) ) {
+	/**
+	 * Function to update activity stream on activity like
+	 *
+	 * @global type $bp
+	 * @global type $wpdb
+	 * @param type $activity_id BP Activity id.
+	 * @param type $user_id BP User id.
+	 * @return boolean
+	 */
 	function wb_add_like_notification( $activity_id, $user_id ) {
 		global $bp, $wpdb;
 
@@ -96,7 +99,7 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 		$activity                = new BP_Activity_Activity( $activity_id );
 		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update                  = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=" . $activity_id );
+		$update                  = $wpdb->get_results( $wpdb->prepare( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=%s", $activity_id ) );
 		if ( ! $update ) {
 			return false;
 		}
