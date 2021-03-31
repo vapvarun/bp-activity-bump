@@ -108,10 +108,3 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 	add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
 }
-
-require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://demos.wbcomdesigns.com/exporter/free-plugins/bp-activity-bump.json',
-	__FILE__, // Full path to the main plugin file or functions.php.
-	'bp-activity-bump'
-);
