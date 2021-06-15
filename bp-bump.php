@@ -1,12 +1,53 @@
 <?php
-/*
-  Plugin Name: BuddyPress Activity Bump
-  Plugin URI: http://wbcomdesigns.com
-  Author:     Wbcom Designs
-  Description: Bumps an activity record to the top of the stream on activity comment replies and like
-  Author URI: http://wbcomdesigns.com
-  Version: 1.1.0
+/**
+ * Plugin Name: BuddyPress Activity Bump
+ * Plugin URI: http://wbcomdesigns.com
+ * Description: Bumps an activity record to the top of the stream on activity comment replies and like
+ * Author:     Wbcom Designs
+ * Author URI: http://wbcomdesigns.com
+ * Version: 1.1.0
+ * Text Domain:   bp-activity-bump
+ *
+ * @link              https://wbcomdesigns.com/
+ * @since             1.0.0
+ * @package           bp-activity-bump
  */
+
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+/**
+ * Currently plugin version.
+ * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Rename this for your plugin and update it as you release new versions.
+ */
+if ( ! defined( 'BP_ACTIVITY_BUMP_VERSION' ) ) {
+	define( 'BP_ACTIVITY_BUMP_VERSION', '1.0.0' );
+}
+if ( ! defined( 'BP_ACTIVITY_BUMP_DIR' ) ) {
+	define( 'BP_ACTIVITY_BUMP_DIR', trailingslashit( dirname( __FILE__ ) ) );
+}
+if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_PATH' ) ) {
+	define( 'BP_ACTIVITY_BUMP_PLUGIN_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
+}
+if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_URL' ) ) {
+	define( 'BP_ACTIVITY_BUMP_PLUGIN_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+}
+if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_BASENAME' ) ) {
+	define( 'BP_ACTIVITY_BUMP_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
+if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_FILE' ) ) {
+	define( 'BP_ACTIVITY_BUMP_PLUGIN_FILE', __FILE__ );
+}
+
+/**
+ * Currently plugin version.
+ * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Rename this for your plugin and update it as you release new versions.
+ */
+define( 'BP_ACTIVITY_BUMP_VERSION', '1.0.0' );
 
 /**
  * Function to update activity template on comment posted
@@ -43,8 +84,11 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 			include locate_template( array( 'activity/entry.php' ), false );
 		}
 	}
+	$bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
+	if ( 'commented-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] || 'both-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] ) {
+		add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 2 );
 
-	add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 2 );
+	}
 }
 
 /**
@@ -105,9 +149,23 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 			include locate_template( array( 'activity/entry.php' ), false );
 		}
 	}
+	$bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
+	if ( 'favorite-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] || 'both-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] ) {
+		add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
 
-	add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
+	}
 }
+
+
+/**
+ * Including file for wbcom admin setting.
+ */
+require plugin_dir_path( __FILE__ ) . 'admin/wbcom/wbcom-admin-settings.php';
+
+/**
+ * Including file for admin setting.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
 
 require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
