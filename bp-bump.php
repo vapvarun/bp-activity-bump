@@ -166,7 +166,18 @@ require plugin_dir_path( __FILE__ ) . 'admin/wbcom/wbcom-admin-settings.php';
  * Including file for admin setting.
  */
 require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
+/**
+ * redirect to plugin settings page after activated
+ */
 
+add_action( 'activated_plugin', 'bp_bump_activation_redirect_settings' );
+function bp_bump_activation_redirect_settings( $plugin ){
+
+	if( $plugin == plugin_basename( __FILE__ ) ) {
+		wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) ) ;
+		exit;
+	}
+}
 require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://demos.wbcomdesigns.com/exporter/free-plugins/bp-activity-bump.json',
