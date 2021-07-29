@@ -43,13 +43,6 @@ if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_FILE' ) ) {
 }
 
 /**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
-define( 'BP_ACTIVITY_BUMP_VERSION', '1.0.0' );
-
-/**
  * Function to update activity template on comment posted
  *
  * @global type $bp
@@ -84,8 +77,9 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 			include locate_template( array( 'activity/entry.php' ), false );
 		}
 	}
-	$bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
-	if ( 'commented-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] || 'both-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] ) {
+	$bp_bump_genral_setting        = get_option( 'bp_bump_admin_general_options' );
+	$bp_bump_get_comment_acitivity = isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ? $bp_bump_genral_setting['bp_bump_activity_option'] : '';
+	if ( 'commented-activity' == $bp_bump_get_comment_acitivity || 'both-activity' == $bp_bump_get_comment_acitivity ) {
 		add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 2 );
 
 	}
@@ -149,8 +143,9 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 			include locate_template( array( 'activity/entry.php' ), false );
 		}
 	}
-	$bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
-	if ( 'favorite-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] || 'both-activity' == $bp_bump_genral_setting['bp_bump_activity_option'] ) {
+	$bp_bump_genral_setting    = get_option( 'bp_bump_admin_general_options' );
+	$bp_bump_get_like_activity = isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ? $bp_bump_genral_setting['bp_bump_activity_option'] : '';
+	if ( 'favorite-activity' == $bp_bump_get_like_activity || 'both-activity' == $bp_bump_get_like_activity ) {
 		add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
 
 	}
@@ -171,10 +166,10 @@ require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
  */
 
 add_action( 'activated_plugin', 'bp_bump_activation_redirect_settings' );
-function bp_bump_activation_redirect_settings( $plugin ){
+function bp_bump_activation_redirect_settings( $plugin ) {
 
-	if( $plugin == plugin_basename( __FILE__ ) ) {
-		wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) ) ;
+	if ( $plugin == plugin_basename( __FILE__ ) ) {
+		wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) );
 		exit;
 	}
 }
