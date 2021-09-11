@@ -23,7 +23,7 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 				<tr>
 					<th scope="row">
 						<label for="bpwoo-shop-tab">
-							<?php esc_html_e( 'Activity Bump on like', 'bp-activity-bump' ); ?>
+							<?php esc_html_e( 'Bump on Like/Favorite', 'bp-activity-bump' ); ?>
 						</label>
 					</th>
 					<td>
@@ -31,13 +31,13 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-liked-activity"  value="favorite-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'favorite-activity' ) : ''; ?>>
 							<div class="bpwoo-slider bupr-round"></div>
 						</label>
-						<p class="description"><?php esc_html_e( 'Enable this option, if you want to display only Liked activities.', 'bp-activity-bump' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Enable this option, if you want to move activity up after new likes.', 'bp-activity-bump' ); ?></p>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">
 						<label for="bpwoo-order-tab">
-							<?php esc_html_e( 'Activity Bump on comments', 'bp-activity-bump' ); ?>
+							<?php esc_html_e( 'Bump on new comments', 'bp-activity-bump' ); ?>
 						</label>
 					</th>
 					<td>
@@ -45,13 +45,13 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-commented-activity"  value="commented-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'commented-activity' ) : ''; ?>>
 							<div class="bpwoo-slider bupr-round"></div>
 						</label>
-						<p class="description"><?php esc_html_e( 'Enable this option, if you want to display only commented activities.', 'bp-activity-bump' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Enable this option, if you want to move activity up after new comment', 'bp-activity-bump' ); ?></p>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row">
 						<label for="bpwoo-order-tracking-tab">
-							<?php esc_html_e( 'Activity Bump on both', 'bp-activity-bump' ); ?>
+							<?php esc_html_e( 'Bump on both', 'bp-activity-bump' ); ?>
 						</label>
 					</th>
 					<td>
@@ -59,7 +59,7 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-both-activities"  value="both-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'both-activity' ) : ''; ?>>
 							<div class="bpwoo-slider bupr-round"></div>
 						</label>
-						<p class="description"><?php esc_html_e( 'Enable this option, if you want to display liked and favorite activities.', 'bp-activity-bump' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Enable this option, if you want to move activity up after new like or comment', 'bp-activity-bump' ); ?></p>
 					</td>
 				</tr>
 			</tbody>
