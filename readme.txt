@@ -20,6 +20,10 @@ This plugin basically provides you the ability to bump activity on comment or li
 3. Use the Regenerate Images admin menu to configure the plugin.
 
 == Changelog ==
+= 1.2.0 =
+* New Feature: Added wbcom wrapper and admin setting
+* New Feature: Added plugin updater files
+* Fix: (#7) Fixed Notice & Warning issue
 
 = 1.1.0 =
 * Fix: #8 Youtube embeded video not getting with embeded after bump
