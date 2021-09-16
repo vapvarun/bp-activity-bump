@@ -164,8 +164,9 @@ require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
 /**
  * redirect to plugin settings page after activated
  */
-
-add_action( 'activated_plugin', 'bp_bump_activation_redirect_settings' );
+if ( class_exists( 'BuddyPress' ) ) {
+	add_action( 'activated_plugin', 'bp_bump_activation_redirect_settings' );
+}
 function bp_bump_activation_redirect_settings( $plugin ) {
 
 	if ( $plugin == plugin_basename( __FILE__ ) ) {
@@ -179,3 +180,48 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	__FILE__, // Full path to the main plugin file or functions.php.
 	'bp-activity-bump'
 );
+
+add_action( 'plugins_loaded', 'bp_bump_plugin_check_required_plugin' );
+/**
+ * Check plugin requirement on plugins loaded,this plugin requires BuddyPress to be installed and active.
+ *
+ * @since 1.0.0
+ */
+function bp_bump_plugin_check_required_plugin() {
+
+	if ( current_user_can( 'activate_plugins' ) && ! class_exists( 'BuddyPress' ) ) {
+		add_action( 'admin_notices', 'bp_bump_plugin_admin_notice' );
+		add_action( 'admin_init', 'bp_bump_remove_existing_bp_bump_plugin' );
+	}
+}
+
+/**
+ * Function to remove check-in plugin if already exist.
+ *
+ * @since 1.0.0
+ */
+function bp_bump_remove_existing_bp_bump_plugin() {
+	$bp_bump_plugin = plugin_dir_path( __DIR__ ) . 'bp-activity-bump/bp-bump.php';
+	// Check to see if plugin is already active.
+	if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+	}
+}
+
+/**
+ * Function to through notice when buddypress plugin is not activated.
+ *
+ * @since 1.0.0
+ */
+function bp_bump_plugin_admin_notice() {
+	$bp_bump_plugin = 'BuddyPress Activity Bump';
+	$bp_plugin   = 'BuddyPress';
+
+	echo '<div class="error"><p>'
+	. sprintf( esc_attr( '%1$s is ineffective as it requires %2$s to be installed and active.', 'bp-activity-bump' ), '<strong>' . esc_attr( $bp_bump_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_plugin ) . '</strong>' )
+	. '</p></div>';
+	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
+		$activate = filter_input( INPUT_GET, 'activate' );
+		unset( $activate );
+	}
+}

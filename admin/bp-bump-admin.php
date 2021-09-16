@@ -40,12 +40,14 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 		 * @author   Wbcom Designs
 		 */
 		public function bpwoo_add_submenu_page_admin_settings() {
-			if ( empty( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
-				add_menu_page( esc_html__( 'WB Plugins', 'bp-activity-bump' ), esc_html__( 'WB Plugins', 'bp-activity-bump' ), 'manage_options', 'wbcomplugins', array( $this, 'bupr_admin_options_page' ), 'dashicons-lightbulb', 59 );
-				add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'bp-activity-bump' ), esc_html__( 'General', 'bp-activity-bump' ), 'manage_options', 'wbcomplugins' );
+			if ( class_exists( 'BuddyPress' ) ) {
+				if ( empty( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
+					add_menu_page( esc_html__( 'WB Plugins', 'bp-activity-bump' ), esc_html__( 'WB Plugins', 'bp-activity-bump' ), 'manage_options', 'wbcomplugins', array( $this, 'bupr_admin_options_page' ), 'dashicons-lightbulb', 59 );
+					add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'bp-activity-bump' ), esc_html__( 'General', 'bp-activity-bump' ), 'manage_options', 'wbcomplugins' );
 
+				}
+				add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Activity Bump', 'bp-activity-bump' ), esc_html__( 'BP Activity Bump', 'bp-activity-bump' ), 'manage_options', 'bp-activity-bump-settings', array( $this, 'bupr_admin_options_page' ) );
 			}
-			add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Activity Bump', 'bp-activity-bump' ), esc_html__( 'BP Activity Bump', 'bp-activity-bump' ), 'manage_options', 'bp-activity-bump-settings', array( $this, 'bupr_admin_options_page' ) );
 		}
 
 		/**
