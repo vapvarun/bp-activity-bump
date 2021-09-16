@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<div class="col">
 						<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'bp-activity-bump' ); ?></h3>
-						<p><?php esc_html_e( 'We have prepared an extensive guide on Buddypress Woocommerce Integration to learn all aspects of the plugin. You will find most of your answers here.', 'bp-activity-bump' ); ?></p>
+						<p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Activity Bump to learn all aspects of the plugin. You will find most of your answers here.', 'bp-activity-bump' ); ?></p>
 						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/docs/buddypress-free-addons/buddypress-activity-bump/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'bp-activity-bump' ); ?></a>
 					</div>
 
