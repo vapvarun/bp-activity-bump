@@ -2,10 +2,13 @@
 /**
  *
  * This file is used for rendering and saving plugin welcome settings.
+ *
+ * @package bp-activity-bump
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
-// Exit if accessed directly.
+	// Exit if accessed directly.
 }
 ?>
 <div class="wbcom-tab-content">

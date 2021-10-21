@@ -42,17 +42,17 @@ if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_FILE' ) ) {
 	define( 'BP_ACTIVITY_BUMP_PLUGIN_FILE', __FILE__ );
 }
 
-/**
- * Function to update activity template on comment posted
- *
- * @global type $bp
- * @global type $wpdb
- * @param type $comment_id
- * @param type $params
- * @return boolean
- */
 if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 
+	/**
+	 * Function to update activity template on comment posted
+	 *
+	 * @global type $bp
+	 * @global type $wpdb
+	 * @param type $comment_id comment_id.
+	 * @param type $params params.
+	 * @return boolean
+	 */
 	function wb_bp_activity_comment_posted( $comment_id, $params ) {
 		global $bp, $wpdb;
 		extract( $params, EXTR_SKIP );
@@ -79,46 +79,49 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 	}
 	$bp_bump_genral_setting        = get_option( 'bp_bump_admin_general_options' );
 	$bp_bump_get_comment_acitivity = isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ? $bp_bump_genral_setting['bp_bump_activity_option'] : '';
-	if ( 'commented-activity' == $bp_bump_get_comment_acitivity || 'both-activity' == $bp_bump_get_comment_acitivity ) {
+	if ( 'commented-activity' === $bp_bump_get_comment_acitivity || 'both-activity' === $bp_bump_get_comment_acitivity ) {
 		add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 2 );
 
 	}
 }
 
-/**
- * Function to update activity action on comment posted and favorite button click
- *
- * @global type $bp
- * @param string $content
- * @param type $activity
- * @return string
- */
 if ( ! function_exists( 'wb_bp_activity_bump_time_since' ) ) {
 
+	/**
+	 * Function to update activity action on comment posted and favorite button click
+	 *
+	 * @global type $bp
+	 * @param string $content content.
+	 * @param type   $activity activity.
+	 * @return string
+	 */
 	function wb_bp_activity_bump_time_since( $content, $activity ) {
 		global $bp;
 		if ( ! $date = bp_activity_get_meta( $activity->id, 'activity_bump_date' ) ) {
 			return $content;
 		}
 
-		$content = '<span class="time-since">' . sprintf( __( ' updated %s', 'bp-activity-bump' ), bp_core_time_since( $activity->date_recorded ) ) . '</span>';
-		return '<span class="time-since time-created">' . sprintf( __( ' %s', 'buddypress' ), bp_core_time_since( $date ) ) . '</span> &middot; ';
+		/* translators: %s: */
+		$content = '<span class="time-since">' . sprintf( esc_html__( ' updated %s', 'bp-activity-bump' ), bp_core_time_since( $activity->date_recorded ) ) . '</span>';
+		/* translators: %s: */
+		return '<span class="time-since time-created">' . sprintf( __( ' %s', 'bp-activity-bump' ), bp_core_time_since( $date ) ) . '</span> &middot; ';
 	}
 
 	add_filter( 'bp_activity_time_since', 'wb_bp_activity_bump_time_since', 10, 2 );
 }
 
-/**
- * Function to update activity stream on activity like
- *
- * @global type $bp
- * @global type $wpdb
- * @param type $activity_id
- * @param type $user_id
- * @return boolean
- */
+
 if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
+	/**
+	 * Function to update activity stream on activity like
+	 *
+	 * @global type $bp
+	 * @global type $wpdb
+	 * @param type $activity_id activity_id.
+	 * @param type $user_id user_id.
+	 * @return boolean
+	 */
 	function wb_add_like_notification( $activity_id, $user_id ) {
 		global $bp, $wpdb;
 
@@ -145,12 +148,11 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 	}
 	$bp_bump_genral_setting    = get_option( 'bp_bump_admin_general_options' );
 	$bp_bump_get_like_activity = isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ? $bp_bump_genral_setting['bp_bump_activity_option'] : '';
-	if ( 'favorite-activity' == $bp_bump_get_like_activity || 'both-activity' == $bp_bump_get_like_activity ) {
+	if ( 'favorite-activity' === $bp_bump_get_like_activity || 'both-activity' === $bp_bump_get_like_activity ) {
 		add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
 
 	}
 }
-
 
 /**
  * Including file for wbcom admin setting.
@@ -162,7 +164,7 @@ require plugin_dir_path( __FILE__ ) . 'admin/wbcom/wbcom-admin-settings.php';
  */
 require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
 /**
- * redirect to plugin settings page after activated
+ * Redirect to plugin settings page after activated.
  */
 if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'activated_plugin', 'bp_bump_activation_redirect_settings' );
@@ -215,10 +217,11 @@ function bp_bump_remove_existing_bp_bump_plugin() {
  */
 function bp_bump_plugin_admin_notice() {
 	$bp_bump_plugin = 'BuddyPress Activity Bump';
-	$bp_plugin   = 'BuddyPress';
+	$bp_plugin      = 'BuddyPress';
 
 	echo '<div class="error"><p>'
-	. sprintf( esc_attr( '%1$s is ineffective as it requires %2$s to be installed and active.', 'bp-activity-bump' ), '<strong>' . esc_attr( $bp_bump_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_plugin ) . '</strong>' )
+	/* translators: %s: */
+	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s to be installed and active.', 'bp-activity-bump' ), '<strong>' . esc_attr( $bp_bump_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_plugin ) . '</strong>' )
 	. '</p></div>';
 	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
 		$activate = filter_input( INPUT_GET, 'activate' );

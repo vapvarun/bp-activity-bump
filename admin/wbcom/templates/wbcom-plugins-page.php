@@ -40,11 +40,11 @@
 			<div class="reign-demos-inner-wrapper wbcom-plugins-inner-wrapper">
 				<?php
 				foreach ( $free_plugins as $key => $plugin_details ) {
-					if ( 'not_installed' == $plugin_details['status'] ) {
+					if ( 'not_installed' === $plugin_details['status'] ) {
 						$plugin_btn_text = esc_html__( 'Install', 'bp-activity-bump' );
 						$toggle_class    = 'fa fa-toggle-off';
 						$plugin_action   = 'install_plugin';
-					} elseif ( 'installed' == $plugin_details['status'] ) {
+					} elseif ( 'installed' === $plugin_details['status'] ) {
 						$plugin_btn_text = esc_html__( 'Activate', 'bp-activity-bump' );
 						$toggle_class    = 'fa fa-toggle-off';
 						$plugin_action   = 'activate_plugin';
