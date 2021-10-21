@@ -4,6 +4,7 @@
  * This file is used for rendering and saving plugin welcome settings.
  *
  * @package bp-activity-bump
+ * @subpackage bp-activity-bump\admin\tab-templates
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

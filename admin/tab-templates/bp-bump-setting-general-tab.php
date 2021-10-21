@@ -2,7 +2,8 @@
 /**
  * Buddypress activity bump general tab content.
  *
- * @package buddywoo
+ * @package bp-activity-bump
+ * @subpackage bp-activity-bump\admin\tab-templates
  */
 
 // Exit if accessed directly.

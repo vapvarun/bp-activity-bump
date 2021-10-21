@@ -169,9 +169,15 @@ require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
 if ( class_exists( 'BuddyPress' ) ) {
 	add_action( 'activated_plugin', 'bp_bump_activation_redirect_settings' );
 }
+/**
+ * Bp_bump_activation_redirect_settings
+ *
+ * @param  mixed $plugin plugin.
+ * @return void
+ */
 function bp_bump_activation_redirect_settings( $plugin ) {
 
-	if ( $plugin == plugin_basename( __FILE__ ) ) {
+	if ( plugin_basename( __FILE__ ) === $plugin ) {
 		wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) );
 		exit;
 	}
