@@ -240,3 +240,24 @@ function bp_bump_plugin_admin_notice() {
 		unset( $activate );
 	}
 }
+
+add_filter( 'bp_rest_activity_prepare_value', 'bp_activity_bump_data_embed_rest_api', 10, 3 );
+
+/**
+ * Embed bp activity bump data in rest api activity endpoint.
+ *
+ * @param  object $response get response data.
+ * @param  object $request get request data.
+ * @param  array  $activity get activity data.
+ * @return $response
+ */
+function bp_activity_bump_data_embed_rest_api( $response, $request, $activity ) {
+	$bp_activity_bump_date              = bp_activity_get_meta( $activity->id, 'activity_bump_date', true );
+	$bp_activity_bump_fvt_count         = bp_activity_get_meta( $activity->id, 'favorite_count', true );
+	$bp_activity_bump_data              = array(
+		'activity_bump_date' => $bp_activity_bump_date,
+		'favorite_count'     => $bp_activity_bump_fvt_count,
+	);	
+	$response->data['bp_activity_bump'] = $bp_activity_bump_data;
+	return $response;
+}
