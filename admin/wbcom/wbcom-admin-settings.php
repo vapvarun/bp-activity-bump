@@ -357,9 +357,6 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			}
 			?>
 			<div id="wb_admin_header" class="wp-clearfix">
-
-				
-
 				<nav id="wb_admin_nav">
 					<ul>
 						<li class="wb_admin_nav_item <?php echo esc_attr( $settings_active ); ?>">
