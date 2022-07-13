@@ -346,9 +346,6 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 				case 'wbcom-plugins-page':
 					$plugin_active = 'is_active';
 					break;
-				case 'wbcom-themes-page':
-					$theme_active = 'is_active';
-					break;
 				case 'wbcom-support-page':
 					$support_active = 'is_active';
 					break;
@@ -374,7 +371,7 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 						<li class="wb_admin_nav_item <?php echo esc_attr( $plugin_active ); ?>">
 							<a href="<?php echo esc_url( get_admin_url() . 'admin.php?page=wbcom-plugins-page' ); ?>" id="wb_admin_nav_trigger_extensions">
 								<i class="fa fa-th"></i>
-								<h4><?php esc_html_e( 'Our Plugins', 'bp-activity-bump' ); ?></h4>
+								<h4><?php esc_html_e( 'Themes & Extension', 'bp-activity-bump' ); ?></h4>
 							</a>
 						</li>
 					

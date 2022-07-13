@@ -25,24 +25,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div class="wbcom-support-info-wrap">
 					<div class="wbcom-support-info-widgets">
 						<div class="wbcom-support-inner">
-						<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'bp-display-xprofile' ); ?></h3>
-						<p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Activity Bump to learn all aspects of the plugin. You will find most of your answers here.', 'bp-display-xprofile' ); ?></p>
-						<a href="<?php echo esc_url( 'https://docs.wbcomdesigns.com/doc_category/buddypress-activity-bump/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'bp-display-xprofile' ); ?></a>
+						<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'bp-activity-bump' ); ?></h3>
+						<p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Activity Bump to learn all aspects of the plugin. You will find most of your answers here.', 'bp-activity-bump' ); ?></p>
+						<a href="<?php echo esc_url( 'https://docs.wbcomdesigns.com/doc_category/buddypress-activity-bump/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'bp-activity-bump' ); ?></a>
 						</div>
 					</div>
 
 					<div class="wbcom-support-info-widgets">
 						<div class="wbcom-support-inner">
-						<h3><span class="dashicons dashicons-sos"></span><?php esc_html_e( 'Support Center', 'bp-display-xprofile' ); ?></h3>
-						<p><?php esc_html_e( 'We strive to offer the best customer care via our support center. Once your theme is activated, you can ask us for help anytime.', 'bp-display-xprofile' ); ?></p>
-						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/support/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Get Support', 'bp-display-xprofile' ); ?></a>
+						<h3><span class="dashicons dashicons-sos"></span><?php esc_html_e( 'Support Center', 'bp-activity-bump' ); ?></h3>
+						<p><?php esc_html_e( 'We strive to offer the best customer care via our support center. Once your theme is activated, you can ask us for help anytime.', 'bp-activity-bump' ); ?></p>
+						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/support/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Get Support', 'bp-activity-bump' ); ?></a>
 					</div>
 					</div>
 					<div class="wbcom-support-info-widgets">
 						<div class="wbcom-support-inner">
-						<h3><span class="dashicons dashicons-admin-comments"></span><?php esc_html_e( 'Got Feedback?', 'bp-display-xprofile' ); ?></h3>
-						<p><?php esc_html_e( 'We want to hear about your experience with the plugin. We would also love to hear any suggestions you may for future updates.', 'bp-display-xprofile' ); ?></p>
-						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/contact/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Send Feedback', 'bp-display-xprofile' ); ?></a>
+						<h3><span class="dashicons dashicons-admin-comments"></span><?php esc_html_e( 'Got Feedback?', 'bp-activity-bump' ); ?></h3>
+						<p><?php esc_html_e( 'We want to hear about your experience with the plugin. We would also love to hear any suggestions you may for future updates.', 'bp-activity-bump' ); ?></p>
+						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/contact/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Send Feedback', 'bp-activity-bump' ); ?></a>
 					</div>
 					</div>
 				</div>

@@ -31,6 +31,7 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'bp_bump_add_submenu_page_admin_settings' ) );
 			add_action( 'admin_init', array( $this, 'bp_bump_plugin_settings' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'bp_bump_admin_enqueue_styles' ) );
 		}
 		/**
 		 * Actions performed on loading admin_menu.
@@ -48,6 +49,15 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 				}
 				add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Activity Bump', 'bp-activity-bump' ), esc_html__( 'BP Activity Bump', 'bp-activity-bump' ), 'manage_options', 'bp-activity-bump-settings', array( $this, 'bupr_admin_options_page' ) );
 			}
+		}
+
+		/**
+		 * Register the stylesheets for the admin area.
+		 *
+		 * @since 1.0.0
+		 */
+		public function bp_bump_admin_enqueue_styles() {
+			wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css/bp-activity-bump-admin.css', array(), $this->version, 'all' );
 		}
 
 		/**
@@ -103,8 +113,8 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 					<div class="blpro-header">
 						<div class="wbcom_admin_header-wrapper">
 							<div id="wb_admin_plugin_name">
-								<?php esc_html_e( 'BuddyPress Activity Bump', 'bp-display-xprofile' ); ?>
-								<span><?php printf( __( 'Version %s', 'bp-display-xprofile' ), BP_ACTIVITY_BUMP_VERSION ); ?></span>
+								<?php esc_html_e( 'BuddyPress Activity Bump', 'bp-activity-bump' ); ?>
+								<span><?php printf( __( 'Version %s', 'bp-activity-bump' ), BP_ACTIVITY_BUMP_VERSION ); ?></span>
 							</div>
 							<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 						</div>
