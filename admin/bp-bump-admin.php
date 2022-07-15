@@ -32,7 +32,26 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 			add_action( 'admin_menu', array( $this, 'bp_bump_add_submenu_page_admin_settings' ) );
 			add_action( 'admin_init', array( $this, 'bp_bump_plugin_settings' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'bp_bump_admin_enqueue_styles' ) );
+			add_action( 'in_admin_header', array( $this, 'bp_bump_hide_all_admin_notices_from_setting_page' ) );
+
 		}
+
+		/**
+		 * Hide all notices from the setting page.
+		 *
+		 * @return void
+		 */
+		public function bp_bump_hide_all_admin_notices_from_setting_page() {
+			$wbcom_pages_array  = array( 'wbcomplugins', 'wbcom-plugins-page', 'wbcom-support-page', 'bp-activity-bump-settings' );
+			$wbcom_setting_page = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+
+			if ( in_array( $wbcom_setting_page, $wbcom_pages_array, true ) ) {
+				remove_all_actions( 'admin_notices' );
+				remove_all_actions( 'all_admin_notices' );
+			}
+
+		}
+
 		/**
 		 * Actions performed on loading admin_menu.
 		 *
@@ -57,7 +76,7 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 		 * @since 1.0.0
 		 */
 		public function bp_bump_admin_enqueue_styles() {
-			wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css/bp-activity-bump-admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css/bp-activity-bump-admin.css', array(), BP_ACTIVITY_BUMP_VERSION, 'all' );
 		}
 
 		/**
