@@ -11,3 +11,11 @@
     margin: 4px;
     background-color: #2a32ef;
 }
+div#setting-error-settings_updated {
+    position: absolute;
+    bottom: 153px;
+    left: 40%;
+    width: 50%;
+    z-index: 9;
+    border-radius: 8px;
+}
