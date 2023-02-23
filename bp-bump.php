@@ -178,8 +178,10 @@ if ( class_exists( 'BuddyPress' ) ) {
 function bp_bump_activation_redirect_settings( $plugin ) {
 
 	if ( plugin_basename( __FILE__ ) === $plugin ) {
-		wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) );
-		exit;
+		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) {
+			wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) );
+			exit;
+		}
 	}
 }
 require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
