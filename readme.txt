@@ -2,8 +2,8 @@
 Contributors: wbcomdesigns
 Tags: activity bump
 Requires at least: 3.0.1
-Tested up to: 5.8.1
-Stable tag: 1.2.0
+Tested up to: 6.2.0
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,12 @@ This plugin basically provides you the ability to bump activity on comment or li
 3. Use the Regenerate Images admin menu to configure the plugin.
 
 == Changelog ==
+
+= 1.2.2 =
+* Fix: Fixed Plugin redirect issue when multi plugin activate the same time
+* Fix: Added activity bump data in rest api activity endpoint
+* Fix: Fixed plugin activation issue
+
 = 1.2.0 =
 * New Feature: Added wbcom wrapper and admin setting
 * New Feature: Added plugin updater files
