@@ -5,7 +5,7 @@
  * Description: Bumps an activity record to the top of the stream on activity comment replies and like
  * Author:     Wbcom Designs
  * Author URI: http://wbcomdesigns.com
- * Version: 1.2.2
+ * Version: 1.2.3
  * Text Domain:   bp-activity-bump
  *
  * @link              https://wbcomdesigns.com/
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 if ( ! defined( 'BP_ACTIVITY_BUMP_VERSION' ) ) {
-	define( 'BP_ACTIVITY_BUMP_VERSION', '1.2.2' );
+	define( 'BP_ACTIVITY_BUMP_VERSION', '1.2.3' );
 }
 if ( ! defined( 'BP_ACTIVITY_BUMP_DIR' ) ) {
 	define( 'BP_ACTIVITY_BUMP_DIR', trailingslashit( dirname( __FILE__ ) ) );
