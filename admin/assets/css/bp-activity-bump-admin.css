@@ -12,6 +12,7 @@
     background-color: #2a32ef;
 }
 div#setting-error-settings_updated {
+    display: none;
     position: absolute;
     bottom: 153px;
     left: 40%;
