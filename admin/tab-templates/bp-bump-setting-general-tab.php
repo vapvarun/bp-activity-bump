@@ -27,9 +27,9 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 				<div class="wbcom-settings-section-wrap">
 					<div class="wbcom-settings-section-options-heading">
 						<label for="bpwoo-shop-tab">
-							<?php esc_html_e( 'Bump on', 'bp-activity-bump' ); ?>
+							<?php esc_html_e( 'Bump On', 'bp-activity-bump' ); ?>
 						</label>
-						<p class="description"><?php esc_html_e( 'If you want to move activity up after new likes.', 'bp-activity-bump' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Enable which action will bump activity.', 'bp-activity-bump' ); ?></p>
 					</div>
 					<div class="wbcom-settings-section-options">
 						<input name="bp_bump_admin_general_options[bp_bump_activity_option]" class="regular-text" type="radio" id="bp-bump-display-liked-activity"  value="favorite-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'favorite-activity' ) : ''; ?>>
