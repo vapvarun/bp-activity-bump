@@ -25,17 +25,14 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 			?>
 			<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
-					<div class="wbcom-settings-section-options-heading">
+						<div class="wbcom-settings-section-options-heading">
 							<label for="bpwoo-shop-tab">
 								<?php esc_html_e( 'Bump on Like/Favorite', 'bp-activity-bump' ); ?>
 							</label>
 							<p class="description"><?php esc_html_e( 'If you want to move activity up after new likes.', 'bp-activity-bump' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
-							<label class="bpwoo-switch">
-								<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-liked-activity"  value="favorite-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'favorite-activity' ) : ''; ?>>
-								<div class="bpwoo-slider bupr-round"></div>
-							</label>							
+							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" class="regular-text" type="checkbox" id="bp-bump-display-liked-activity"  value="favorite-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'favorite-activity' ) : ''; ?>>
 						</div>
 					</div>
 					<div class="wbcom-settings-section-wrap">
@@ -46,10 +43,7 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 							<p class="description"><?php esc_html_e( 'If you want to move activity up after new comment', 'bp-activity-bump' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
-							<label class="bpwoo-switch">
-								<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-commented-activity"  value="commented-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'commented-activity' ) : ''; ?>>
-								<div class="bpwoo-slider bupr-round"></div>
-							</label>							
+								<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="checkbox" id="bp-bump-display-commented-activity"  value="commented-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'commented-activity' ) : ''; ?>>						
 						</div>
 					</div>					
 					<div class="wbcom-settings-section-wrap">
@@ -60,10 +54,7 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 							<p class="description"><?php esc_html_e( 'If you want to move activity up after new like or comment', 'bp-activity-bump' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
-							<label class="bpwoo-switch">
-								<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-both-activities"  value="both-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'both-activity' ) : ''; ?>>
-								<div class="bpwoo-slider bupr-round"></div>
-							</label>							
+							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="checkbox" id="bp-bump-display-both-activities"  value="both-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'both-activity' ) : ''; ?>>
 						</div>
 					</div>
 			</div>

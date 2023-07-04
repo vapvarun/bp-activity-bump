@@ -101,6 +101,7 @@ h4.wbcom-support-section {
 .wbcom-settings-section-options-flex {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .wbcom-settings-section-options select,
