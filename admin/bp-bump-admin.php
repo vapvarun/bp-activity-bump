@@ -22,6 +22,13 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 	class BP_ACTIVITY_BUMP_ADMIN_SETIING {
 
 		/**
+		 * Plugin tabs settings
+		 *
+		 * @var mixed
+		 */
+		private $plugin_settings_tabs;
+
+		/**
 		 * Constructor.
 		 *
 		 * @since    1.0.0
@@ -133,10 +140,12 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 						<div class="wbcom_admin_header-wrapper">
 							<div id="wb_admin_plugin_name">
 								<?php esc_html_e( 'BuddyPress Activity Bump', 'bp-activity-bump' ); ?>
-								<span><?php 
+								<span>
+								<?php
 								/* translators: %s: */
 								printf( esc_html__( 'Version %s', 'bp-activity-bump' ), esc_attr( BP_ACTIVITY_BUMP_VERSION ) );
-								?></span>
+								?>
+								</span>
 							</div>
 							<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 						</div>
