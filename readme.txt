@@ -2,8 +2,8 @@
 Contributors: wbcomdesigns
 Tags: activity bump
 Requires at least: 3.0.1
-Tested up to: 6.2.0
-Stable tag: 1.2.3
+Tested up to: 6.3.1
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,10 @@ This plugin basically provides you the ability to bump activity on comment or li
 3. Use the Regenerate Images admin menu to configure the plugin.
 
 == Changelog ==
+= 1.2.4 =
+* Fix: (#32) Issue with php8.2
+* Fix: PHPCS fixes
+
 = 1.2.3 =
 * Fix: (#31) Fatal error on saving setting
 * Fix: (#30)Setting messages issue. 
