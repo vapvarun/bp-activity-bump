@@ -207,6 +207,7 @@ function bp_bump_plugin_check_required_plugin() {
 		add_action( 'admin_notices', 'bp_bump_plugin_admin_notice' );
 		add_action( 'admin_init', 'bp_bump_remove_existing_bp_bump_plugin' );
 	} else {
+		 $bump_option = array();
 		$bump_option = get_option( 'bp_bump_admin_general_options' );
 		if ( empty( $bump_option ) ) {
 			$bump_option['bp_bump_activity_option'] = 'both-activity';
