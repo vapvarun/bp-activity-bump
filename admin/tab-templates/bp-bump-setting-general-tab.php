@@ -31,13 +31,19 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 						</label>
 						<p class="description"><?php esc_html_e( 'Enable which action will bump activity.', 'bp-activity-bump' ); ?></p>
 					</div>
-					<div class="wbcom-settings-section-options">
-						<input name="bp_bump_admin_general_options[bp_bump_activity_option]" class="regular-text" type="radio" id="bp-bump-display-liked-activity"  value="favorite-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'favorite-activity' ) : ''; ?>>
-						<label for="bp-bump-display-liked-activity"><?php esc_html_e( 'Like/Favorite', 'bp-activity-bump' ); ?></label>
-						<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-commented-activity"  value="commented-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'commented-activity' ) : ''; ?>>
-						<label for="bp-bump-display-commented-activity"><?php esc_html_e( 'New Comment', 'bp-activity-bump' ); ?></label>
-						<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-both-activities"  value="both-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'both-activity' ) : ''; ?>>				
-						<label for="bp-bump-display-both-activities"><?php esc_html_e( 'Both', 'bp-activity-bump' ); ?></label>		
+					<div class="wbcom-settings-section-options bp-bump-activity-option-wrapper">
+						<div class="bp-bump-activity-option-inner-wrap">
+							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" class="regular-text" type="radio" id="bp-bump-display-liked-activity"  value="favorite-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'favorite-activity' ) : ''; ?>>
+							<label for="bp-bump-display-liked-activity"><?php esc_html_e( 'Like/Favorite', 'bp-activity-bump' ); ?></label>
+						</div>
+						<div class="bp-bump-activity-option-inner-wrap">
+							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-commented-activity"  value="commented-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'commented-activity' ) : ''; ?>>
+							<label for="bp-bump-display-commented-activity"><?php esc_html_e( 'New Comment', 'bp-activity-bump' ); ?></label>
+						</div>
+						<div class="bp-bump-activity-option-inner-wrap">
+							<input name="bp_bump_admin_general_options[bp_bump_activity_option]" type="radio" id="bp-bump-display-both-activities"  value="both-activity"<?php ( isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ) ? checked( $bp_bump_genral_setting['bp_bump_activity_option'], 'both-activity' ) : ''; ?>>				
+							<label for="bp-bump-display-both-activities"><?php esc_html_e( 'Both', 'bp-activity-bump' ); ?></label>
+						</div>
 					</div>
 				</div>
 			</div>

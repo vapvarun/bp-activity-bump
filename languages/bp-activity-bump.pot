@@ -1,14 +1,14 @@
-# Copyright (C) 2023
+# Copyright (C) 2024 
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 09:51:30+00:00\n"
+"POT-Creation-Date: 2024-08-22 11:33:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Varun Dubey\n"
 "Language-Team: Wbcom Designs\n"
 "Language: en\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "Welcome"
 msgstr ""
 
-#: admin/bp-bump-admin.php:146 admin/wbcom/templates/wbcom-license-page.php:14
+#: admin/bp-bump-admin.php:146 admin/wbcom/templates/wbcom-license-page.php:16
 #. translators: %s:
 msgid "Version %s"
 msgstr ""
@@ -63,15 +63,15 @@ msgstr ""
 msgid "Enable which action will bump activity."
 msgstr ""
 
-#: admin/tab-templates/bp-bump-setting-general-tab.php:36
+#: admin/tab-templates/bp-bump-setting-general-tab.php:37
 msgid "Like/Favorite"
 msgstr ""
 
-#: admin/tab-templates/bp-bump-setting-general-tab.php:38
+#: admin/tab-templates/bp-bump-setting-general-tab.php:41
 msgid "New Comment"
 msgstr ""
 
-#: admin/tab-templates/bp-bump-setting-general-tab.php:40
+#: admin/tab-templates/bp-bump-setting-general-tab.php:45
 msgid "Both"
 msgstr ""
 
@@ -136,32 +136,32 @@ msgstr ""
 msgid "Send Feedback"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-license-page.php:20
+#: admin/wbcom/templates/wbcom-license-page.php:23
 msgid "Plugin License"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:26
-#: admin/wbcom/templates/wbcom-license-page.php:38
-msgid "Product"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:27
-#: admin/wbcom/templates/wbcom-license-page.php:39
-msgid "Version"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:28
-#: admin/wbcom/templates/wbcom-license-page.php:40
-msgid "Key"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:29
 #: admin/wbcom/templates/wbcom-license-page.php:41
-msgid "Status"
+msgid "Product"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:30
 #: admin/wbcom/templates/wbcom-license-page.php:42
+msgid "Version"
+msgstr ""
+
+#: admin/wbcom/templates/wbcom-license-page.php:31
+#: admin/wbcom/templates/wbcom-license-page.php:43
+msgid "Key"
+msgstr ""
+
+#: admin/wbcom/templates/wbcom-license-page.php:32
+#: admin/wbcom/templates/wbcom-license-page.php:44
+msgid "Status"
+msgstr ""
+
+#: admin/wbcom/templates/wbcom-license-page.php:33
+#: admin/wbcom/templates/wbcom-license-page.php:45
 msgid "Action"
 msgstr ""
 
@@ -772,7 +772,7 @@ msgstr ""
 msgid " %s"
 msgstr ""
 
-#: bp-bump.php:238
+#: bp-bump.php:243
 #. translators: %s:
 msgid "%1$s is ineffective as it requires %2$s to be installed and active."
 msgstr ""

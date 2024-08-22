@@ -5,12 +5,14 @@
     border: 2px solid #ccc;
     box-shadow: none !important;
 }
+
 .form-table .wbcom-settings-section-options input[type=radio]:checked::before {
     width: 18px;
     height: 18px;
     margin: 4px;
     background-color: #2a32ef;
 }
+
 div#setting-error-settings_updated {
     display: none;
     position: absolute;
@@ -19,4 +21,17 @@ div#setting-error-settings_updated {
     width: 50%;
     z-index: 9;
     border-radius: 8px;
+}
+
+.wbcom-settings-section-options.bp-bump-activity-option-wrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    gap: 15px;
+}
+
+@media screen and (max-width: 480px) {
+    .bp-bump-activity-option-wrapper .bp-bump-activity-option-inner-wrap {
+        flex: 0 0 100%;
+    }
 }
