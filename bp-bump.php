@@ -68,7 +68,7 @@ if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
 
 		$activity                = new BP_Activity_Activity( $activity_id );
 		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update                  = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=" . $activity_id );
+		$update                  = $wpdb->get_results( $wpdb->prepare( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = %s  WHERE  id= %d", array( $activity->date_recorded, $activity_id )  ) );
 		if ( ! $update ) {
 			return false;
 		}
@@ -137,7 +137,7 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 		$activity                = new BP_Activity_Activity( $activity_id );
 		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update                  = $wpdb->get_results( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = '" . gmdate( 'Y-m-d H:i:s' ) . "'  WHERE  id=" . $activity_id );
+		$update                  = $wpdb->get_results( $wpdb->prepare( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = %s WHERE  id= %d" , array( $activity->date_recorded, $activity_id ) )  );
 		if ( ! $update ) {
 			return false;
 		}
