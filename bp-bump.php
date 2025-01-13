@@ -164,8 +164,6 @@ require plugin_dir_path( __FILE__ ) . 'admin/wbcom/wbcom-admin-settings.php';
  */
 require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
 
-require_once __DIR__ . '/vendor/autoload.php';
-HardG\BuddyPress120URLPolyfills\Loader::init();
 
 /**
  * Redirect to plugin settings page after activated.
