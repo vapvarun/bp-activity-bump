@@ -100,11 +100,11 @@ if ( ! function_exists( 'wb_bp_activity_bump_time_since' ) ) {
 		if ( ! $date = bp_activity_get_meta( $activity->id, 'activity_bump_date' ) ) {
 			return $content;
 		}
-
+		
 		/* translators: %s: */
 		$content = '<span class="time-since">' . sprintf( esc_html__( ' updated %s', 'bp-activity-bump' ), bp_core_time_since( $activity->date_recorded ) ) . '</span>';
 		/* translators: %s: */
-		return '<span class="time-since time-created">' . sprintf( __( ' %s', 'bp-activity-bump' ), bp_core_time_since( $date ) ) . '</span> &middot; ';
+		return '<span class="time-since time-created">' . sprintf( __( ' %s', 'bp-activity-bump' ), bp_core_time_since( $date ) ) . '</span> ';
 	}
 
 	add_filter( 'bp_activity_time_since', 'wb_bp_activity_bump_time_since', 10, 2 );
