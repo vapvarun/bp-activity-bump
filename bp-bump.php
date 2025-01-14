@@ -127,6 +127,10 @@ if ( ! function_exists( 'wb_add_like_notification' ) ) {
 
 		$activity_parent = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
 
+		if ( ! isset( $activity_parent['activities'][0] ) ) { 
+			return;  
+		}
+		
 		if ( ! $activity_parent = $activity_parent['activities'][0] ) {
 			return;
 		}
