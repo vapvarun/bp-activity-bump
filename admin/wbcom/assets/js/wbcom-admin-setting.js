@@ -1,3 +1,7 @@
+if (typeof wp !== 'undefined' && wp.i18n) {
+	const { __ } = wp.i18n;
+}
+
 jQuery(document).ready(function (event) {
     jQuery("#toplevel_page_wbcomplugins .wp-submenu li").each(function () {
         var link = jQuery(this).find('a').attr('href');

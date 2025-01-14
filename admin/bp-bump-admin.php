@@ -83,7 +83,15 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 		 * @since 1.0.0
 		 */
 		public function bp_bump_admin_enqueue_styles() {
-			wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css/bp-activity-bump-admin.css', array(), BP_ACTIVITY_BUMP_VERSION, 'all' );
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				$extension = is_rtl() ? '.rtl.css' : '.css';
+				$path      = is_rtl() ? '/rtl' : '';
+			} else {
+				$extension = is_rtl() ? '.rtl.css' : '.min.css';
+				$path      = is_rtl() ? '/rtl' : '/min';
+			}
+
+			wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css' . $path . '/bp-activity-bump-admin' .$extension, array(), BP_ACTIVITY_BUMP_VERSION, 'all' );
 		}
 
 		/**
