@@ -26,7 +26,7 @@
 				<div id="wbcom_paid_extention" class="wbcom-bp-addons-plugins-list wbcom-bp-free-addon-plugins">
 					<div class="wbcom-bp-addons-plugins-title-section">
 						<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Paid Extension', 'bp-activity-bump' ); ?></h4>
-						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/plugins/premium-buddypress-add-ons/' ); ?>" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extension', 'bp-activity-bump' ); ?></a>
+						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/plugins/premium-buddypress-add-ons/' ); ?>" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extensions', 'bp-activity-bump' ); ?></a>
 					</div>
 				<div class="wbcom-addon-plugins-inner-wrapper">
 					<div class="wbcom-addons-plugins-card">
@@ -297,7 +297,7 @@
 			<div id="wbcom-learndash-extension" class="wbcom-bp-addons-plugins-list wbcom-bp-free-addon-plugins">
 				<div class="wbcom-bp-addons-plugins-title-section">
 					<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Extension for LearnDash', 'bp-activity-bump' ); ?></h4>
-					<a href="https://wbcomdesigns.com/plugins/learndash-add-ons/" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extension', 'bp-activity-bump' ); ?></a>
+					<a href="https://wbcomdesigns.com/plugins/learndash-add-ons/" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extensions', 'bp-activity-bump' ); ?></a>
 				</div>
 				<div class="wbcom-addon-plugins-inner-wrapper">
 					<div class="wbcom-addons-plugins-card">
@@ -422,7 +422,7 @@
 			<div id="wbcom-free-extension" class="wbcom-bp-addons-plugins-list wbcom-bp-free-addon-plugins">
 				<div class="wbcom-bp-addons-plugins-title-section">
 					<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Our Free Extension', 'bp-activity-bump' ); ?></h4>
-					<a href="https://wbcomdesigns.com/plugins/buddypress/" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extension', 'bp-activity-bump' ); ?></a>
+					<a href="https://wbcomdesigns.com/plugins/buddypress/" class="wbcom-addons-button" target="_blank"><?php esc_html_e( 'View More Extensions', 'bp-activity-bump' ); ?></a>
 				</div>
 				<div class="wbcom-addon-plugins-inner-wrapper">
 					<div class="wbcom-addons-plugins-card">

@@ -15,7 +15,7 @@
 		</div>      
 		<div id="wbcom_admin_content_support" class="wbcom-all-addons-plugins-wrap">
 			<h4 class="wbcom-support-section"><?php esc_html_e( 'How can we help you?', 'bp-activity-bump' ); ?></h4>
-			<p><?php esc_html_e( 'Our team is here to help you out at anytime. If you have any idea about how we could improve. You can share access to your site on our helpdesk if it can help getting faster.', 'bp-activity-bump' ); ?></p>
+			<p><?php esc_html_e( 'Our team is here to help you out at any time. If you have any idea about how we could improve. You can share access to your site on our helpdesk if it can help getting faster.', 'bp-activity-bump' ); ?></p>
 
 			<ul id="wbcom_support_list" class="wbcom_boxes_list">
 				<li class="wbcom_help_support_box">

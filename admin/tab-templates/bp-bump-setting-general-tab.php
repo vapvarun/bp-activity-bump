@@ -29,7 +29,7 @@ $bp_bump_genral_setting = get_option( 'bp_bump_admin_general_options' );
 						<label for="bpwoo-shop-tab">
 							<?php esc_html_e( 'Bump On', 'bp-activity-bump' ); ?>
 						</label>
-						<p class="description"><?php esc_html_e( 'Enable which action will bump activity.', 'bp-activity-bump' ); ?></p>
+						<p class="description"><?php esc_html_e( 'Select the action that will trigger an activity bump.', 'bp-activity-bump' ); ?></p>
 					</div>
 					<div class="wbcom-settings-section-options bp-bump-activity-option-wrapper">
 						<div class="bp-bump-activity-option-inner-wrap">
