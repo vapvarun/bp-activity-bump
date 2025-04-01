@@ -91,7 +91,7 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 				$path      = is_rtl() ? '/rtl' : '/min';
 			}
 
-			if ( ( isset( $_GET[ 'page' ] ) && ( ( 'bp-activity-bump-settings' === $_GET[ 'page' ]  ) || ( 'wbcomplugins' === $_GET[ 'page' ] ) || ( 'wbcom-license-page'  === $_GET[ 'page' ] ) ) ) ) {
+			if ( ( isset( $_GET[ 'page' ] ) && ( ( 'bp-activity-bump-settings' === $_GET[ 'page' ]  ) || ( 'wbcomplugins' === $_GET[ 'page' ] ) || ( 'wbcom-license-page'  === $_GET[ 'page' ] ) ) ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				
 				wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css' . $path . '/bp-activity-bump-admin' .$extension, array(), BP_ACTIVITY_BUMP_VERSION, 'all' );
 			}
