@@ -73,7 +73,7 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 					add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'bp-activity-bump' ), esc_html__( 'General', 'bp-activity-bump' ), 'manage_options', 'wbcomplugins' );
 
 				}
-				add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Activity Bump', 'bp-activity-bump' ), esc_html__( 'BP Activity Bump', 'bp-activity-bump' ), 'manage_options', 'bp-activity-bump-settings', array( $this, 'bupr_admin_options_page' ) );
+				add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Activity Bump', 'bp-activity-bump' ), esc_html__( 'Activity Bump', 'bp-activity-bump' ), 'manage_options', 'bp-activity-bump-settings', array( $this, 'bupr_admin_options_page' ) );
 			}
 		}
 
