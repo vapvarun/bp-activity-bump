@@ -15,7 +15,7 @@
 		</div>      
 		<div id="wbcom_admin_content_support" class="wbcom-all-addons-plugins-wrap">
 			<h4 class="wbcom-support-section"><?php esc_html_e( 'How can we help you?', 'bp-activity-bump' ); ?></h4>
-			<p><?php esc_html_e( 'Our team is here to help you out at any time. If you have any idea about how we could improve. You can share access to your site on our helpdesk if it can help getting faster.', 'bp-activity-bump' ); ?></p>
+			<p><?php esc_html_e( 'Our team is here to help you out at any time. If you have any ideas about how we could improve, you can share access to your site on our helpdesk if it can help get faster assistance.', 'bp-activity-bump' ); ?></p>
 
 			<ul id="wbcom_support_list" class="wbcom_boxes_list">
 				<li class="wbcom_help_support_box">
@@ -42,7 +42,7 @@
 					<div class="wbcom_help_support_details">
 						<div class="wbcom_help_support_inner_details">
 							<h4><?php esc_html_e( 'Contact Us', 'bp-activity-bump' ); ?></h4>
-							<p><?php esc_html_e( 'Create a new thread on our plugin page, participation is open to anyone from all around the world. We\'ll be there to help as well but can\'t guarantee any delay.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'Create a new thread on our plugin page, participation is open to anyone from all around the world. We\'ll be there to help as well but can\'t guarantee response times.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom_help_support_button">
 								<a href="https://wbcomdesigns.com/contact/" class="wb_btn wb_btn_default" target="_blank">
 									<?php esc_html_e( 'Contact Us', 'bp-activity-bump' ); ?>

@@ -126,7 +126,7 @@
 						</div>
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'BuddyPress BuddyVendor', 'bp-activity-bump' ); ?></h2>
-							<p><?php esc_html_e( 'BuddyVendor or BuddyPress Multivendor Marketplace Quickly turn your BuddyPress community into a social marketplace.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'BuddyVendor or BuddyPress Multivendor Marketplace: Quickly turn your BuddyPress community into a social marketplace.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddyvendor/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'bp-activity-bump' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/buddyvendor/#pricing-table" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'bp-activity-bump' ); ?></a>
@@ -165,7 +165,7 @@
 						</div>
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'BuddyPress Friend & Follow Suggestion', 'bp-activity-bump' ); ?></h2>
-							<p><?php esc_html_e( 'BuddyPress Friends and Follow suggestions plugin assists you with improving your BuddyPress or BuddyBoss Platform-based community.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'BuddyPress Friends and Follow suggestions plugin assists you in improving your BuddyPress or BuddyBoss Platform-based community.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-friend-follow-suggestion/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'bp-activity-bump' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/buddypress-friend-follow-suggestion/#pricing-table" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'bp-activity-bump' ); ?></a>
@@ -230,7 +230,7 @@
 						</div>
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'BuddyPress Auto Friends', 'bp-activity-bump' ); ?></h2>
-							<p><?php esc_html_e( 'The new BuddyPress Automatic Friends plugins makes your new users feel a little more at home upon signing up to your community.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'The new BuddyPress Automatic Friends plugin makes your new users feel a little more at home upon signing up to your community.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-auto-friends/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'bp-activity-bump' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/buddypress-auto-friends/#pricing-table" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'bp-activity-bump' ); ?></a>
@@ -395,7 +395,7 @@
 						</div>
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'BuddyX Free Theme', 'bp-activity-bump' ); ?></h2>
-							<p><?php esc_html_e( 'Allow users to create and manage their to-dos with the relevant category right from their profile.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'BuddyX is an ideal theme for community and membership websites. It provides a solution to all kinds of communities.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://buddyxtheme.com/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'bp-activity-bump' ); ?></a>
 								<a href="ttps://wbcomdesigns.com/downloads/buddyx-pro-theme/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get Pro', 'bp-activity-bump' ); ?></a>
@@ -508,7 +508,7 @@
 					<div class="wbcom-addons-plugins-card">
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'BuddyPress Member Export Import', 'bp-activity-bump' ); ?></h2>
-							<p><?php esc_html_e( 'Easily import/export your BuddyPress members. Small but an important features.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'Easily import/export your BuddyPress members. Small but important features.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-member-export-import/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'bp-activity-bump' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/buddypress-member-export-import/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'bp-activity-bump' ); ?></a>
@@ -518,7 +518,7 @@
 					<div class="wbcom-addons-plugins-card">
 						<div class="wbcom-addons-card-details">
 							<h2><?php esc_html_e( 'BuddyPress Activity Bump', 'bp-activity-bump' ); ?></h2>
-							<p><?php esc_html_e( 'ump the most recent activity on the top of newsfeed in your BuddyPress website.', 'bp-activity-bump' ); ?></p>
+							<p><?php esc_html_e( 'Bump the most recent activity on the top of newsfeed in your BuddyPress website.', 'bp-activity-bump' ); ?></p>
 							<div class="wbcom-addons-card-button">								
 								<a target="_blank" href="https://wbcomdesigns.com/downloads/buddypress-activity-bump/" class="wbcom-addons-button"><?php esc_html_e( 'View Details', 'bp-activity-bump' ); ?></a>
 								<a href="https://wbcomdesigns.com/downloads/buddypress-activity-bump/" class="wbcom-addons-button wbcom-purchase" target="_blank"><?php esc_html_e( 'Get It Now', 'bp-activity-bump' ); ?></a>
