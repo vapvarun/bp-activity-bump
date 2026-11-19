@@ -23,6 +23,7 @@ This plugin basically provides you the ability to bump activity on comment or li
 == Changelog ==
 = 1.2.5 - November 2026 =
 
+* Fix      - A bumped post's original time keeps refreshing live ("x ago") like every other post.
 * Fix      - The stream now reorders right after a bump on sites with a persistent object cache (Redis, Memcached).
 * Fix      - Liking a comment no longer changes that comment's date; only top-level activities are bumped.
 * Fix      - The "Settings saved." notice is visible again after saving the Bump On option.

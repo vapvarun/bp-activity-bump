@@ -178,7 +178,12 @@ function wb_bp_activity_bump_time_since( $content, $activity ) {
 		return $content;
 	}
 
-	return '<span class="time-since time-created">' . esc_html( bp_core_time_since( $date ) ) . '</span> ';
+	// Same markup as core (bp_insert_activity_meta), so BuddyPress's live "x ago" refresh keeps the original time.
+	return sprintf(
+		'<span class="time-since time-created" data-livestamp="%1$s">%2$s</span> ',
+		esc_attr( bp_core_get_iso8601_date( $date ) ),
+		esc_html( bp_core_time_since( $date ) )
+	);
 }
 
 /**
