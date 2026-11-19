@@ -1,24 +1,23 @@
-# Copyright (C) 2025 Wbcom Designs
+# Copyright (C) 2026 Wbcom Designs
 # This file is distributed under the same license as the BuddyPress Activity Bump plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: BuddyPress Activity Bump 1.2.4\n"
+"Project-Id-Version: BuddyPress Activity Bump 1.2.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bp-activity-bump\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-11T05:58:13+00:00\n"
+"POT-Creation-Date: 2026-11-19T12:50:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bp-activity-bump\n"
 
 #. Plugin Name of the plugin
 #: bp-bump.php
-#: admin/bp-bump-admin.php:76
-#: admin/bp-bump-admin.php:151
-#: admin/wbcom/templates/wbcom-license-page.php:9
+#: admin/bp-bump-admin.php:74
+#: admin/bp-bump-admin.php:165
 #: admin/wbcom/templates/wbcom-plugins-page.php:512
 msgid "BuddyPress Activity Bump"
 msgstr ""
@@ -26,7 +25,7 @@ msgstr ""
 #. Plugin URI of the plugin
 #. Author URI of the plugin
 #: bp-bump.php
-msgid "http://wbcomdesigns.com"
+msgid "https://wbcomdesigns.com/"
 msgstr ""
 
 #. Description of the plugin
@@ -39,27 +38,31 @@ msgstr ""
 msgid "Wbcom Designs"
 msgstr ""
 
-#: admin/bp-bump-admin.php:72
+#: admin/bp-bump-admin.php:70
 msgid "WB Plugins"
 msgstr ""
 
-#: admin/bp-bump-admin.php:73
-#: admin/bp-bump-admin.php:113
+#: admin/bp-bump-admin.php:71
+#: admin/bp-bump-admin.php:110
 msgid "General"
 msgstr ""
 
-#: admin/bp-bump-admin.php:76
+#: admin/bp-bump-admin.php:74
 msgid "Activity Bump"
 msgstr ""
 
-#: admin/bp-bump-admin.php:109
+#: admin/bp-bump-admin.php:106
 msgid "Welcome"
 msgstr ""
 
 #. translators: %s:
-#: admin/bp-bump-admin.php:155
-#: admin/wbcom/templates/wbcom-license-page.php:13
+#: admin/bp-bump-admin.php:169
+#, php-format
 msgid "Version %s"
+msgstr ""
+
+#: admin/bp-bump-admin.php:194
+msgid "Menu"
 msgstr ""
 
 #: admin/tab-templates/bp-bump-setting-general-tab.php:18
@@ -134,35 +137,6 @@ msgstr ""
 msgid "Send Feedback"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-license-page.php:20
-msgid "Plugin License"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:26
-#: admin/wbcom/templates/wbcom-license-page.php:38
-msgid "Product"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:27
-#: admin/wbcom/templates/wbcom-license-page.php:39
-msgid "Version"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:28
-#: admin/wbcom/templates/wbcom-license-page.php:40
-msgid "Key"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:29
-#: admin/wbcom/templates/wbcom-license-page.php:41
-msgid "Status"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-license-page.php:30
-#: admin/wbcom/templates/wbcom-license-page.php:42
-msgid "Action"
-msgstr ""
-
 #: admin/wbcom/templates/wbcom-plugins-page.php:9
 msgid "Themes & Extensions"
 msgstr ""
@@ -182,8 +156,6 @@ msgstr ""
 
 #: admin/wbcom/templates/wbcom-plugins-page.php:20
 #: admin/wbcom/templates/wbcom-plugins-page.php:366
-#: admin/wbcom/wbcom-admin-settings.php:293
-#: admin/wbcom/wbcom-admin-settings.php:294
 msgid "Our Themes"
 msgstr ""
 
@@ -800,79 +772,35 @@ msgstr ""
 msgid "Create a new thread on our plugin page, participation is open to anyone from all around the world. We'll be there to help as well but can't guarantee response times."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:251
+#: admin/wbcom/wbcom-admin-settings.php:84
 msgid "Activate"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:252
+#: admin/wbcom/wbcom-admin-settings.php:85
 msgid "Deactivate"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:285
-#: admin/wbcom/wbcom-admin-settings.php:286
+#: admin/wbcom/wbcom-admin-settings.php:117
+#: admin/wbcom/wbcom-admin-settings.php:118
 msgid "Our Plugins"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:301
-#: admin/wbcom/wbcom-admin-settings.php:302
-#: admin/wbcom/wbcom-admin-settings.php:381
+#: admin/wbcom/wbcom-admin-settings.php:125
+#: admin/wbcom/wbcom-admin-settings.php:126
+#: admin/wbcom/wbcom-admin-settings.php:194
 msgid "Support"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:368
+#: admin/wbcom/wbcom-admin-settings.php:181
 msgid "Settings"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:374
+#: admin/wbcom/wbcom-admin-settings.php:187
 msgid "Themes & Extension"
 msgstr ""
 
-#. translators: %s:
-#: bp-bump.php:105
-msgid " updated %s"
-msgstr ""
-
-#. translators: %s:
-#: bp-bump.php:107
-msgid " %s"
-msgstr ""
-
-#. translators: %s:
-#: bp-bump.php:245
+#. translators: 1: plugin name, 2: BuddyPress.
+#: bp-bump.php:219
+#, php-format
 msgid "%1$s is ineffective as it requires %2$s to be installed and active."
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:54
-msgid "View details"
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:77
-msgid "More information about %s"
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:128
-msgid "Check for updates"
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:213
-msgctxt "the plugin title"
-msgid "The %s plugin is up to date."
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:215
-msgctxt "the plugin title"
-msgid "A new version of the %s plugin is available."
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:217
-msgctxt "the plugin title"
-msgid "Could not determine if updates are available for %s."
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Plugin/Ui.php:223
-msgid "Unknown update checker status \"%s\""
-msgstr ""
-
-#: plugin-update-checker/Puc/v4p10/Vcs/PluginUpdateChecker.php:98
-msgid "There is no changelog available."
 msgstr ""

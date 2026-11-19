@@ -1,0 +1,72 @@
+{
+  "product": "BuddyPress Activity Bump",
+  "productType": "plugin",
+  "shortId": "bpbump",
+  "sections": [
+    {
+      "name": "Getting Started",
+      "folder": "getting-started",
+      "description": "What the plugin does and how to install it.",
+      "pages": [
+        {
+          "slug": "overview",
+          "title": "Overview",
+          "file": "getting-started/overview.md"
+        },
+        {
+          "slug": "installation",
+          "title": "Installation",
+          "file": "getting-started/installation.md"
+        }
+      ]
+    },
+    {
+      "name": "Usage",
+      "folder": "usage",
+      "description": "Choose what bumps an activity.",
+      "pages": [
+        {
+          "slug": "bump-settings",
+          "title": "Choose what bumps an activity",
+          "file": "usage/bump-settings.md"
+        }
+      ]
+    },
+    {
+      "name": "Help",
+      "folder": "faq",
+      "description": "Answers to common questions.",
+      "pages": [
+        {
+          "slug": "faq",
+          "title": "Frequently asked questions",
+          "file": "faq/faq.md"
+        }
+      ]
+    },
+    {
+      "name": "Troubleshooting",
+      "folder": "troubleshooting",
+      "description": "Fix an activity that does not move.",
+      "pages": [
+        {
+          "slug": "troubleshooting",
+          "title": "Troubleshooting",
+          "file": "troubleshooting/troubleshooting.md"
+        }
+      ]
+    },
+    {
+      "name": "What's New",
+      "folder": "whats-new",
+      "description": "Release notes, newest first.",
+      "pages": [
+        {
+          "slug": "whats-new-in-1-2-5",
+          "title": "What's New in 1.2.5",
+          "file": "whats-new/whats-new-in-1-2-5.md"
+        }
+      ]
+    }
+  ]
+}
