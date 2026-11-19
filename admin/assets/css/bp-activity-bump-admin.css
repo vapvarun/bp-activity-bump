@@ -2,7 +2,7 @@
 .form-table .wbcom-settings-section-options input[type=radio] {
     width: 30px;
     height: 30px;
-    border: 2px solid #ccc;
+    border: 2px solid var(--border-color-medium);
     box-shadow: none !important;
 }
 
@@ -10,17 +10,7 @@
     width: 18px;
     height: 18px;
     margin: 4px;
-    background-color: #2a32ef;
-}
-
-div#setting-error-settings_updated {
-    display: none;
-    position: absolute;
-    bottom: 153px;
-    left: 40%;
-    width: 50%;
-    z-index: 9;
-    border-radius: 8px;
+    background-color: var(--primary-color);
 }
 
 .wbcom-settings-section-options.bp-bump-activity-option-wrapper {
@@ -34,4 +24,7 @@ div#setting-error-settings_updated {
     .bp-bump-activity-option-wrapper .bp-bump-activity-option-inner-wrap {
         flex: 0 0 100%;
     }
+}
+.wbcom-tabs-section .nav-tab-wrapper .bp-bump-genral a::before {
+    content: "\f111";
 }

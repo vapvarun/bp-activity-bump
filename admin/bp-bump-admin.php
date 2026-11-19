@@ -40,7 +40,6 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 			add_action( 'admin_init', array( $this, 'bp_bump_plugin_settings' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'bp_bump_admin_enqueue_styles' ) );
 			add_action( 'in_admin_header', array( $this, 'bp_bump_hide_all_admin_notices_from_setting_page' ) );
-
 		}
 
 		/**
@@ -56,7 +55,6 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 				remove_all_actions( 'admin_notices' );
 				remove_all_actions( 'all_admin_notices' );
 			}
-
 		}
 
 		/**
@@ -91,11 +89,10 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 				$path      = is_rtl() ? '/rtl' : '/min';
 			}
 
-			if ( ( isset( $_GET[ 'page' ] ) && ( ( 'bp-activity-bump-settings' === $_GET[ 'page' ]  ) || ( 'wbcomplugins' === $_GET[ 'page' ] ) || ( 'wbcom-license-page'  === $_GET[ 'page' ] ) ) ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-				
-				wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css' . $path . '/bp-activity-bump-admin' .$extension, array(), BP_ACTIVITY_BUMP_VERSION, 'all' );
+			if ( ( isset( $_GET['page'] ) && ( ( 'bp-activity-bump-settings' === $_GET['page'] ) || ( 'wbcomplugins' === $_GET['page'] ) ) ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+				wp_enqueue_style( 'bp-activity-bump-admin', plugin_dir_url( __FILE__ ) . 'assets/css' . $path . '/bp-activity-bump-admin' . $extension, array(), BP_ACTIVITY_BUMP_VERSION, 'all' );
 			}
-			
 		}
 
 		/**
@@ -111,8 +108,25 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 			add_settings_section( 'bp-bump-welcome', ' ', array( $this, 'bp_bump_admin_welcome_content' ), 'bp-bump-welcome' );
 
 			$this->plugin_settings_tabs['bp-bump-genral'] = esc_html__( 'General', 'bp-activity-bump' );
-			register_setting( 'bp_bump_admin_general_options', 'bp_bump_admin_general_options' );
+			register_setting(
+				'bp_bump_admin_general_options',
+				'bp_bump_admin_general_options',
+				array( 'sanitize_callback' => array( $this, 'bp_bump_sanitize_general_options' ) )
+			);
 			add_settings_section( 'bp-bump-genral', ' ', array( $this, 'bp_bump_admin_general_content' ), 'bp-bump-genral' );
+		}
+
+		/**
+		 * Keep only a known "Bump On" choice.
+		 *
+		 * @param mixed $input Submitted options.
+		 * @return array
+		 */
+		public function bp_bump_sanitize_general_options( $input ) {
+			$choice = is_array( $input ) && isset( $input['bp_bump_activity_option'] ) ? $input['bp_bump_activity_option'] : '';
+			return array(
+				'bp_bump_activity_option' => in_array( $choice, array( 'favorite-activity', 'commented-activity', 'both-activity' ), true ) ? $choice : 'both-activity',
+			);
 		}
 
 		/**
@@ -152,18 +166,18 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 								<span>
 								<?php
 								/* translators: %s: */
-								printf( esc_html__( 'Version %s', 'bp-activity-bump' ), esc_attr( BP_ACTIVITY_BUMP_VERSION ) );
+								printf( esc_html__( 'Version %s', 'bp-activity-bump' ), esc_html( BP_ACTIVITY_BUMP_VERSION ) );
 								?>
 								</span>
 							</div>
 							<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 						</div>
 					</div>
+					<hr class="wp-header-end">
+					<?php settings_errors(); ?>
 					<div class="wbcom-admin-settings-page">
 						<?php
-						settings_errors();
 						$this->bupr_plugin_settings_tabs();
-						settings_fields( $tab );
 						do_settings_sections( $tab );
 						?>
 					</div>
@@ -177,20 +191,12 @@ if ( ! class_exists( 'BP_ACTIVITY_BUMP_ADMIN_SETIING' ) ) {
 		 */
 		public function bupr_plugin_settings_tabs() {
 			$current_tab = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'bp-bump-welcome';
-			// xprofile setup tab.
-			?>
-			<style>
-				.nav-tab-wrapper ul .bp-bump-genral a:before {
-				content: "\f111" !important;
-				}
-			</style>
-			<?php
-			echo '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
+			echo '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html__( 'Menu', 'bp-activity-bump' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 			foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 				$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
-				echo '<li class="' . esc_attr( $tab_key ) . '"><a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="?page=bp-activity-bump-settings&tab=' . esc_attr( $tab_key ) . '">' . esc_attr( $tab_caption ) . '</a></li>';
+				echo '<li class="' . esc_attr( $tab_key ) . '"><a class="nav-tab ' . esc_attr( $active ) . '" id="' . esc_attr( $tab_key ) . '-tab" href="' . esc_url( admin_url( 'admin.php?page=bp-activity-bump-settings&tab=' . $tab_key ) ) . '">' . esc_html( $tab_caption ) . '</a></li>';
 			}
-			echo '</div></ul></div>';
+			echo '</ul></div></div>';
 		}
 	}
 	new BP_ACTIVITY_BUMP_ADMIN_SETIING();

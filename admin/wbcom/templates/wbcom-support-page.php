@@ -17,7 +17,7 @@
 			<ul id="wbcom_support_list" class="wbcom_boxes_list">
 				<li class="wbcom_help_support_box">
 					<div class="wbcom_help_support_icon_wrapper">
-						<i class="fa fa-tags"></i>
+						<span class="dashicons dashicons-tag"></span>
 					</div>
 					<div class="wbcom_help_support_details">
 						<div class="wbcom_help_support_inner_details">
@@ -34,7 +34,7 @@
 
 				<li class="wbcom_help_support_box">
 						<div class="wbcom_help_support_icon_wrapper">
-							<i class="fa fa-comments"></i>
+							<span class="dashicons dashicons-admin-comments"></span>
 						</div>
 					<div class="wbcom_help_support_details">
 						<div class="wbcom_help_support_inner_details">
