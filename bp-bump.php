@@ -1,11 +1,12 @@
 <?php
 /**
  * Plugin Name: BuddyPress Activity Bump
- * Plugin URI: http://wbcomdesigns.com
+ * Plugin URI: https://wbcomdesigns.com/
  * Description: Bumps an activity record to the top of the stream on activity comment replies and like
  * Author:     Wbcom Designs
- * Author URI: http://wbcomdesigns.com
- * Version: 1.2.4
+ * Author URI: https://wbcomdesigns.com/
+ * Version: 1.2.5
+ * Requires PHP: 8.1
  * Text Domain:   bp-activity-bump
  *
  * @link              https://wbcomdesigns.com/
@@ -18,16 +19,11 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
 if ( ! defined( 'BP_ACTIVITY_BUMP_VERSION' ) ) {
-	define( 'BP_ACTIVITY_BUMP_VERSION', '1.2.4' );
+	define( 'BP_ACTIVITY_BUMP_VERSION', '1.2.5' );
 }
 if ( ! defined( 'BP_ACTIVITY_BUMP_DIR' ) ) {
-	define( 'BP_ACTIVITY_BUMP_DIR', trailingslashit( dirname( __FILE__ ) ) );
+	define( 'BP_ACTIVITY_BUMP_DIR', trailingslashit( __DIR__ ) );
 }
 if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_PATH' ) ) {
 	define( 'BP_ACTIVITY_BUMP_PLUGIN_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
@@ -42,122 +38,6 @@ if ( ! defined( 'BP_ACTIVITY_BUMP_PLUGIN_FILE' ) ) {
 	define( 'BP_ACTIVITY_BUMP_PLUGIN_FILE', __FILE__ );
 }
 
-if ( ! function_exists( 'wb_bp_activity_comment_posted' ) ) {
-
-	/**
-	 * Function to update activity template on comment posted
-	 *
-	 * @global type $bp
-	 * @global type $wpdb
-	 * @param type $comment_id comment_id.
-	 * @param type $params params.
-	 * @return boolean
-	 */
-	function wb_bp_activity_comment_posted( $comment_id, $params ) {
-		global $bp, $wpdb;
-		extract( $params, EXTR_SKIP );
-		$activity_parent = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
-
-		if ( ! $activity_parent = $activity_parent['activities'][0] ) {
-			return;
-		}
-
-		if ( ! bp_activity_get_meta( $activity_id, 'activity_bump_date' ) ) {
-			bp_activity_update_meta( $activity_id, 'activity_bump_date', $activity_parent->date_recorded );
-		}
-
-		$activity                = new BP_Activity_Activity( $activity_id );
-		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update                  = $wpdb->get_results( $wpdb->prepare( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = %s  WHERE  id= %d", array( $activity->date_recorded, $activity_id )  ) );
-		if ( ! $update ) {
-			return false;
-		}
-
-		if ( bp_has_activities( bp_ajax_querystring( 'activity' ) ) ) {
-			include locate_template( array( 'activity/entry.php' ), false );
-		}
-	}
-	$bp_bump_genral_setting        = get_option( 'bp_bump_admin_general_options' );
-	$bp_bump_get_comment_acitivity = isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ? $bp_bump_genral_setting['bp_bump_activity_option'] : '';
-	if ( 'commented-activity' === $bp_bump_get_comment_acitivity || 'both-activity' === $bp_bump_get_comment_acitivity ) {
-		add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 2 );
-
-	}
-}
-
-if ( ! function_exists( 'wb_bp_activity_bump_time_since' ) ) {
-
-	/**
-	 * Function to update activity action on comment posted and favorite button click
-	 *
-	 * @global type $bp
-	 * @param string $content content.
-	 * @param type   $activity activity.
-	 * @return string
-	 */
-	function wb_bp_activity_bump_time_since( $content, $activity ) {
-		global $bp;
-		if ( ! $date = bp_activity_get_meta( $activity->id, 'activity_bump_date' ) ) {
-			return $content;
-		}
-		
-		/* translators: %s: */
-		$content = '<span class="time-since">' . sprintf( esc_html__( ' updated %s', 'bp-activity-bump' ), bp_core_time_since( $activity->date_recorded ) ) . '</span>';
-		/* translators: %s: */
-		return '<span class="time-since time-created">' . sprintf( __( ' %s', 'bp-activity-bump' ), bp_core_time_since( $date ) ) . '</span> ';
-	}
-
-	add_filter( 'bp_activity_time_since', 'wb_bp_activity_bump_time_since', 10, 2 );
-}
-
-
-if ( ! function_exists( 'wb_add_like_notification' ) ) {
-
-	/**
-	 * Function to update activity stream on activity like
-	 *
-	 * @global type $bp
-	 * @global type $wpdb
-	 * @param type $activity_id activity_id.
-	 * @param type $user_id user_id.
-	 * @return boolean
-	 */
-	function wb_add_like_notification( $activity_id, $user_id ) {
-		global $bp, $wpdb;
-
-		$activity_parent = bp_activity_get_specific( array( 'activity_ids' => $activity_id ) );
-
-		if ( ! isset( $activity_parent['activities'][0] ) ) { 
-			return;  
-		}
-		
-		if ( ! $activity_parent = $activity_parent['activities'][0] ) {
-			return;
-		}
-
-		if ( ! bp_activity_get_meta( $activity_id, 'activity_bump_date' ) ) {
-			bp_activity_update_meta( $activity_id, 'activity_bump_date', $activity_parent->date_recorded );
-		}
-
-		$activity                = new BP_Activity_Activity( $activity_id );
-		$activity->date_recorded = gmdate( 'Y-m-d H:i:s' );
-		$update                  = $wpdb->get_results( $wpdb->prepare( "UPDATE  {$wpdb->prefix}bp_activity SET date_recorded = %s WHERE  id= %d" , array( $activity->date_recorded, $activity_id ) )  );
-		if ( ! $update ) {
-			return false;
-		}
-
-		if ( bp_has_activities( bp_ajax_querystring( 'activity' ) ) ) {
-			include locate_template( array( 'activity/entry.php' ), false );
-		}
-	}
-	$bp_bump_genral_setting    = get_option( 'bp_bump_admin_general_options' );
-	$bp_bump_get_like_activity = isset( $bp_bump_genral_setting['bp_bump_activity_option'] ) ? $bp_bump_genral_setting['bp_bump_activity_option'] : '';
-	if ( 'favorite-activity' === $bp_bump_get_like_activity || 'both-activity' === $bp_bump_get_like_activity ) {
-		add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9, 2 );
-
-	}
-}
-
 /**
  * Including file for wbcom admin setting.
  */
@@ -168,6 +48,138 @@ require plugin_dir_path( __FILE__ ) . 'admin/wbcom/wbcom-admin-settings.php';
  */
 require_once plugin_dir_path( __FILE__ ) . 'admin/bp-bump-admin.php';
 
+/**
+ * Which actions bump an activity: 'favorite-activity', 'commented-activity' or 'both-activity'.
+ *
+ * @since 1.2.5
+ * @return string
+ */
+function wb_bp_activity_bump_mode() {
+	$options = get_option( 'bp_bump_admin_general_options' );
+	$mode    = is_array( $options ) && isset( $options['bp_bump_activity_option'] ) ? $options['bp_bump_activity_option'] : '';
+	return in_array( $mode, array( 'favorite-activity', 'commented-activity', 'both-activity' ), true ) ? $mode : 'both-activity';
+}
+
+/**
+ * Register the bump hooks once BuddyPress components are known, only when the Activity component is on.
+ *
+ * @since 1.2.5
+ */
+function wb_bp_activity_bump_register_hooks() {
+	if ( ! function_exists( 'bp_is_active' ) || ! bp_is_active( 'activity' ) ) {
+		return;
+	}
+
+	$mode = wb_bp_activity_bump_mode();
+	if ( 'commented-activity' === $mode || 'both-activity' === $mode ) {
+		add_action( 'bp_activity_comment_posted', 'wb_bp_activity_comment_posted', 10, 3 );
+	}
+	if ( 'favorite-activity' === $mode || 'both-activity' === $mode ) {
+		add_action( 'bp_activity_add_user_favorite', 'wb_add_like_notification', 9 );
+		// BuddyBoss reactions replace favorites on BuddyBoss sites.
+		add_action( 'bb_reaction_after_add_user_item_reaction', 'wb_bp_activity_bump_on_reaction', 10, 2 );
+	}
+
+	add_filter( 'bp_activity_time_since', 'wb_bp_activity_bump_time_since', 10, 2 );
+	add_filter( 'bp_rest_activity_prepare_value', 'bp_activity_bump_data_embed_rest_api', 10, 3 );
+}
+add_action( 'bp_init', 'wb_bp_activity_bump_register_hooks' );
+
+/**
+ * Move a top-level activity to the top of the stream.
+ *
+ * The first bump stores the original date in the `activity_bump_date` meta so it can still be shown.
+ *
+ * @since 1.2.5
+ * @param int $activity_id Activity ID.
+ * @return bool True when the activity was bumped.
+ */
+function wb_bp_activity_bump( $activity_id ) {
+	global $wpdb;
+
+	$activity_id = (int) $activity_id;
+	if ( $activity_id < 1 ) {
+		return false;
+	}
+
+	$activity = new BP_Activity_Activity( $activity_id );
+
+	// Comments keep their own date: only top-level items move in the stream.
+	if ( empty( $activity->id ) || 'activity_comment' === $activity->type ) {
+		return false;
+	}
+
+	if ( ! bp_activity_get_meta( $activity_id, 'activity_bump_date' ) ) {
+		bp_activity_update_meta( $activity_id, 'activity_bump_date', $activity->date_recorded );
+	}
+
+	$table   = buddypress()->activity->table_name;
+	$updated = $wpdb->query( $wpdb->prepare( "UPDATE {$table} SET date_recorded = %s WHERE id = %d", gmdate( 'Y-m-d H:i:s' ), $activity_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery
+
+	if ( ! $updated ) {
+		return false;
+	}
+
+	// Raw SQL skips BuddyPress' own save hooks: drop the cached row and the cached stream queries.
+	wp_cache_delete( $activity_id, 'bp_activity' );
+	wp_cache_delete( 'bp_activity_sitewide_front', 'bp' );
+	bp_activity_reset_cache_incrementor();
+
+	return true;
+}
+
+/**
+ * Bump the activity a comment or reply was posted on.
+ *
+ * @since 1.0.0
+ * @param int                       $comment_id Comment ID.
+ * @param array                     $params     Comment arguments.
+ * @param BP_Activity_Activity|null $activity   Activity commented on.
+ */
+function wb_bp_activity_comment_posted( $comment_id, $params, $activity = null ) {
+	$activity_id = is_object( $activity ) && ! empty( $activity->id ) ? $activity->id : ( $params['activity_id'] ?? 0 );
+	wb_bp_activity_bump( $activity_id );
+}
+
+/**
+ * Bump an activity when a member likes (favorites) it.
+ *
+ * @since 1.0.0
+ * @param int $activity_id Activity ID.
+ */
+function wb_add_like_notification( $activity_id ) {
+	wb_bp_activity_bump( $activity_id );
+}
+
+/**
+ * Bump an activity when a member reacts to it on BuddyBoss.
+ *
+ * @since 1.2.5
+ * @param int   $user_reaction_id Reaction ID.
+ * @param array $args             Reaction arguments.
+ */
+function wb_bp_activity_bump_on_reaction( $user_reaction_id, $args ) {
+	if ( isset( $args['item_type'], $args['item_id'] ) && 'activity' === $args['item_type'] ) {
+		wb_bp_activity_bump( $args['item_id'] );
+	}
+}
+
+/**
+ * Show the original post date on a bumped activity instead of the bump time.
+ *
+ * @since 1.0.0
+ * @param string               $content  Time since markup.
+ * @param BP_Activity_Activity $activity Activity.
+ * @return string
+ */
+function wb_bp_activity_bump_time_since( $content, $activity ) {
+	$date = '' === $content ? '' : bp_activity_get_meta( $activity->id, 'activity_bump_date' );
+	if ( ! $date ) {
+		return $content;
+	}
+
+	return '<span class="time-since time-created">' . esc_html( bp_core_time_since( $date ) ) . '</span> ';
+}
 
 /**
  * Redirect to plugin settings page after activated.
@@ -184,90 +196,42 @@ if ( class_exists( 'BuddyPress' ) ) {
 function bp_bump_activation_redirect_settings( $plugin ) {
 
 	if ( plugin_basename( __FILE__ ) === $plugin ) {
-		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) { //phpcs:ignore
-			wp_redirect( admin_url( 'admin.php?page=wbcomplugins' ) );
+		if ( isset( $_REQUEST['action'] ) && 'activate' === $_REQUEST['action'] && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] === $plugin ) { //phpcs:ignore
+			wp_safe_redirect( admin_url( 'admin.php?page=bp-activity-bump-settings&tab=bp-bump-genral' ) );
 			exit;
 		}
 	}
 }
-require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-$myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://demos.wbcomdesigns.com/exporter/free-plugins/bp-activity-bump.json',
-	__FILE__, // Full path to the main plugin file or functions.php.
-	'bp-activity-bump'
-);
 
-add_action( 'plugins_loaded', 'bp_bump_plugin_check_required_plugin' );
+add_action( 'admin_notices', 'bp_bump_plugin_admin_notice' );
 /**
- * Check plugin requirement on plugins loaded,this plugin requires BuddyPress to be installed and active.
- *
- * @since 1.0.0
- */
-function bp_bump_plugin_check_required_plugin() {
-
-	if ( current_user_can( 'activate_plugins' ) && ! class_exists( 'BuddyPress' ) ) {
-		add_action( 'admin_notices', 'bp_bump_plugin_admin_notice' );
-		add_action( 'admin_init', 'bp_bump_remove_existing_bp_bump_plugin' );
-	} else {
-		 $bump_option = array();
-		$bump_option = get_option( 'bp_bump_admin_general_options' );
-		if ( empty( $bump_option ) ) {
-			$bump_option['bp_bump_activity_option'] = 'both-activity';
-			update_option( 'bp_bump_admin_general_options', $bump_option );
-		}
-	}
-}
-
-/**
- * Function to remove check-in plugin if already exist.
- *
- * @since 1.0.0
- */
-function bp_bump_remove_existing_bp_bump_plugin() {
-	$bp_bump_plugin = plugin_dir_path( __DIR__ ) . 'bp-activity-bump/bp-bump.php';
-	// Check to see if plugin is already active.
-	if ( is_plugin_active( plugin_basename( __FILE__ ) ) ) {
-		deactivate_plugins( plugin_basename( __FILE__ ) );
-	}
-}
-
-/**
- * Function to through notice when buddypress plugin is not activated.
+ * Tell admins that this plugin needs BuddyPress. The plugin stays active so settings survive a BuddyPress update.
  *
  * @since 1.0.0
  */
 function bp_bump_plugin_admin_notice() {
-	$bp_bump_plugin = 'BuddyPress Activity Bump';
-	$bp_plugin      = 'BuddyPress';
+	if ( class_exists( 'BuddyPress' ) || ! current_user_can( 'activate_plugins' ) ) {
+		return;
+	}
 
 	echo '<div class="error"><p>'
-	/* translators: %s: */
-	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s to be installed and active.', 'bp-activity-bump' ), '<strong>' . esc_attr( $bp_bump_plugin ) . '</strong>', '<strong>' . esc_attr( $bp_plugin ) . '</strong>' )
+	/* translators: 1: plugin name, 2: BuddyPress. */
+	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s to be installed and active.', 'bp-activity-bump' ), '<strong>BuddyPress Activity Bump</strong>', '<strong>BuddyPress</strong>' )
 	. '</p></div>';
-	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
-		$activate = filter_input( INPUT_GET, 'activate' );
-		unset( $activate );
-	}
 }
-
-add_filter( 'bp_rest_activity_prepare_value', 'bp_activity_bump_data_embed_rest_api', 10, 3 );
 
 /**
  * Embed bp activity bump data in rest api activity endpoint.
  *
- * @param  object $response get response data.
- * @param  object $request get request data.
- * @param  array  $activity get activity data.
- * @return $response
+ * @param  WP_REST_Response $response get response data.
+ * @param  WP_REST_Request  $request get request data.
+ * @param  object           $activity get activity data.
+ * @return WP_REST_Response
  */
 function bp_activity_bump_data_embed_rest_api( $response, $request, $activity ) {
-	$bp_activity_bump_date              = bp_activity_get_meta( $activity->id, 'activity_bump_date', true );
-	$bp_activity_bump_fvt_count         = bp_activity_get_meta( $activity->id, 'favorite_count', true );
-	$bp_activity_bump_data              = array(
-		'activity_bump_date' => $bp_activity_bump_date,
-		'favorite_count'     => $bp_activity_bump_fvt_count,
-	);	
-	$response->data['bp_activity_bump'] = $bp_activity_bump_data;
+	$response->data['bp_activity_bump'] = array(
+		'activity_bump_date' => bp_activity_get_meta( $activity->id, 'activity_bump_date', true ),
+		'favorite_count'     => bp_activity_get_meta( $activity->id, 'favorite_count', true ),
+	);
 	return $response;
 }
