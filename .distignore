@@ -1,0 +1,50 @@
+# Files and folders EXCLUDED from the distribution zip.
+# Consumed by `wp dist-archive` and bin/build-release.sh.
+# The dev repo keeps all of these; only the shipped zip is trimmed.
+
+# Version control / CI
+/.git
+/.github
+/.githooks
+/.gitignore
+/.distignore
+/.editorconfig
+
+# Node / PHP build + dev tooling
+/node_modules
+/vendor
+/composer.json
+/composer.lock
+
+# QA / audit / docs / release artifacts (repo-only)
+/audit
+/docs
+/dist
+/bin
+/tests
+/phpcs.xml
+/phpcs.xml.dist
+/phpcs-report.xml
+/phpstan.neon
+/phpstan.neon.dist
+/phpstan-baseline.neon
+/phpunit.xml
+/phpunit.xml.dist
+
+# Loose docs and source maps (ship code, not these)
+*.md
+*.map
+*.zip
+.DS_Store
+Thumbs.db
+
+# WordPress.org listing assets live in SVN /assets, not in the plugin zip
+/.wordpress-org
+/screenshot-*.png
+/.contract-audit-baseline.json
+/package-lock.json
+/.wbcom-i18n.json
+/.time-standard-allow
+/.gate-check-allow
+/gruntfile.js
+/package.json

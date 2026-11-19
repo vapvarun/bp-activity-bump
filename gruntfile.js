@@ -45,7 +45,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'public/css/', // Source directory for frontend CSS files
-                    src: ['*.css', '!*.min.css', '!vendor/*.css'], // Minify all frontend CSS files except already minified ones
+                    src: ['*.css', '!*.min.css'], // Minify all frontend CSS files except already minified ones
                     dest: 'public/css/min', // Destination directory for minified frontend CSS
                     ext: '.min.css', // Extension for minified files
                 }],
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'admin/assets/css/', // Source directory for admin CSS files
-                    src: ['*.css', '!*.min.css', '!vendor/*.css'], // Minify all admin CSS files except already minified ones
+                    src: ['*.css', '!*.min.css'], // Minify all admin CSS files except already minified ones
                     dest: 'admin/assets/css/min/', // Destination directory for minified admin CSS
                     ext: '.min.css', // Extension for minified files
                 }],
@@ -63,7 +63,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'admin/wbcom/assets/css/', // Source directory for admin CSS files
-                    src: ['*.css', '!*.min.css', '!vendor/*.css'], // Minify all admin CSS files except already minified ones
+                    src: ['*.css', '!*.min.css'], // Minify all admin CSS files except already minified ones
                     dest: 'admin/wbcom/assets/css/min/', // Destination directory for minified admin CSS
                     ext: '.min.css', // Extension for minified files
                 }],
@@ -79,7 +79,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'public/js/', // Source directory for frontend JS files
-                    src: ['*.js', '!*.min.js', '!vendor/*.js'], // Minify all frontend JS files except already minified ones
+                    src: ['*.js', '!*.min.js'], // Minify all frontend JS files except already minified ones
                     dest: 'public/js/min/', // Destination directory for minified frontend JS
                     ext: '.min.js', // Extension for minified files
                 }],
@@ -91,7 +91,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'admin/js/', // Source directory for admin JS files
-                    src: ['*.js', '!*.min.js', '!vendor/*.js'], // Minify all admin JS files except already minified ones
+                    src: ['*.js', '!*.min.js'], // Minify all admin JS files except already minified ones
                     dest: 'admin/js/min/', // Destination directory for minified admin JS
                     ext: '.min.js', // Extension for minified files
                 }],
@@ -103,7 +103,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'admin/wbcom/assets/js', // Source directory for admin JS files
-                    src: ['*.js', '!*.min.js', '!vendor/*.js'], // Minify all admin JS files except already minified ones
+                    src: ['*.js', '!*.min.js'], // Minify all admin JS files except already minified ones
                     dest: 'admin/wbcom/assets/js/min/', // Destination directory for minified admin JS
                     ext: '.min.js', // Extension for minified files
                 }],
@@ -153,7 +153,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'public/css/', // Source directory for public CSS
-                        src: ['**/*.min.css', '!vendor/**/*.css'], // Source files, excluding vendor CSS
+                        src: ['**/*.min.css'], // Source files
                         dest: 'public/css/rtl/', // Destination directory for public RTL CSS
                         ext: '.rtl.css', // Extension for RTL files
                         flatten: true // Prevents creating subdirectories
@@ -161,7 +161,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'admin/assets/css/', // Source directory for admin CSS
-                        src: ['**/*.min.css', '!vendor/**/*.css'], // Source files, excluding vendor CSS
+                        src: ['**/*.min.css'], // Source files
                         dest: 'admin/assets/css/rtl/', // Destination directory for admin RTL CSS
                         ext: '.rtl.css', // Extension for RTL files
                         flatten: true // Prevents creating subdirectories
@@ -169,7 +169,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: 'admin/wbcom/assets/css', // Source directory for public CSS
-                        src: ['**/*.css', '!**/*.min.css', '!vendor/**/*.css'], // Source files, excluding vendor CSS
+                        src: ['*.css', '!*.min.css'], // Source files (top level only, so rtl/ is not re-read)
                         dest: 'admin/wbcom/assets/css/rtl/', // Destination directory for public RTL CSS
                         ext: '.rtl.css', // Extension for RTL files
                         flatten: true // Prevents creating subdirectories
